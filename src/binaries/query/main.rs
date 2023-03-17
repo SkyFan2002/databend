@@ -273,7 +273,7 @@ async fn main_entrypoint() -> Result<()> {
         conf.query.mysql_handler_host, conf.query.mysql_handler_port
     );
     println!(
-        "    connect via: mysql -uroot -h{} -P{}",
+        "    connect via: mysql1111 -uroot -h{} -P{}",
         conf.query.mysql_handler_host, conf.query.mysql_handler_port
     );
     println!("Clickhouse(http)");

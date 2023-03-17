@@ -227,6 +227,8 @@ pub fn order_by_expr(i: Input) -> IResult<OrderByExpr> {
 
 pub fn table_reference(i: Input) -> IResult<TableReference> {
     let (rest, table_reference_elements) = rule!(#table_reference_element+)(i)?;
+    println!("{:?}", table_reference_elements);
+    println!("{:?}", rest);
     let iter = &mut table_reference_elements.into_iter();
     run_pratt_parser(TableReferenceParser, iter, rest, i)
 }
@@ -261,6 +263,7 @@ pub enum TableReferenceElement {
         table: Identifier,
         alias: Option<TableAlias>,
         travel_point: Option<TimeTravelPoint>,
+        pivot: Option<PivotMeta>,
     },
     // `TABLE(expr)[ AS alias ]`
     TableFunction {
@@ -289,16 +292,30 @@ pub enum TableReferenceElement {
 }
 
 pub fn table_reference_element(i: Input) -> IResult<WithSpan<TableReferenceElement>> {
+    // PIVOT(expr FOR col IN (ident, ...))
+    let pivot = map(
+        rule! {
+           PIVOT ~ "(" ~ #expr ~ "FOR" ~ #ident ~ "IN" ~ "(" ~ #comma_separated_list1(expr) ~ ")" ~ ")"
+        },
+        |(_pivot, _, aggregate, _for, pivot_column, _in, _, pivot_values, _, _)| PivotMeta {
+            aggregate,
+            pivot_column,
+            pivot_values,
+        },
+    );
     let aliased_table = map(
         rule! {
-            #period_separated_idents_1_to_3 ~ (AT ~ #travel_point)? ~ #table_alias?
+            #period_separated_idents_1_to_3 ~ (AT ~ #travel_point)? ~ #table_alias? ~ #pivot?
         },
-        |((catalog, database, table), travel_point_opt, alias)| TableReferenceElement::Table {
-            catalog,
-            database,
-            table,
-            alias,
-            travel_point: travel_point_opt.map(|p| p.1),
+        |((catalog, database, table), travel_point_opt, alias, pivot)| {
+            TableReferenceElement::Table {
+                catalog,
+                database,
+                table,
+                alias,
+                travel_point: travel_point_opt.map(|p| p.1),
+                pivot,
+            }
         },
     );
     let table_function = map(
@@ -423,6 +440,7 @@ impl<'a, I: Iterator<Item = WithSpan<'a, TableReferenceElement>>> PrattParser<I>
                 table,
                 alias,
                 travel_point,
+                pivot,
             } => TableReference::Table {
                 span: transform_span(input.span.0),
                 catalog,
@@ -430,6 +448,7 @@ impl<'a, I: Iterator<Item = WithSpan<'a, TableReferenceElement>>> PrattParser<I>
                 table,
                 alias,
                 travel_point,
+                pivot,
             },
             TableReferenceElement::TableFunction {
                 name,

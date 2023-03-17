@@ -130,6 +130,7 @@ impl Binder {
                 table,
                 alias,
                 travel_point,
+                pivot: _,
             } => {
                 let (catalog, database, table_name) =
                     self.normalize_object_identifier_triple(catalog, database, table);

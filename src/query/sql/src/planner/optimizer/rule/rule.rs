@@ -72,6 +72,7 @@ pub enum RuleID {
     CommuteJoinBaseTable,
     LeftExchangeJoin,
     RightExchangeJoin,
+    RewritePivot,
 }
 
 impl Display for RuleID {
@@ -107,6 +108,7 @@ impl Display for RuleID {
             RuleID::LeftExchangeJoin => write!(f, "LeftExchangeJoin"),
             RuleID::RightExchangeJoin => write!(f, "RightExchangeJoin"),
             RuleID::ExchangeJoin => write!(f, "ExchangeJoin"),
+            RuleID::RewritePivot => write!(f, "RewritePivot"),
         }
     }
 }

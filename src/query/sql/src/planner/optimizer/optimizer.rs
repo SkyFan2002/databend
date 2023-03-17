@@ -148,6 +148,10 @@ pub fn optimize_query(
     let contains_local_table_scan = contains_local_table_scan(&s_expr, &metadata);
 
     let mut heuristic = HeuristicOptimizer::new(ctx.clone(), bind_context, metadata.clone());
+    println!("{:#?}", s_expr);
+    println!("****************************");
+    println!("{:#?}", s_expr.plan);
+    println!("****************************");
     let mut result = heuristic.optimize(s_expr)?;
     let mut cascades = CascadesOptimizer::create(ctx.clone(), metadata)?;
     result = cascades.optimize(result)?;

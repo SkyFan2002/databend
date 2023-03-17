@@ -38,6 +38,7 @@ use crate::optimizer::rule::rewrite::RulePushDownLimitScan;
 use crate::optimizer::rule::rewrite::RulePushDownLimitSort;
 use crate::optimizer::rule::rewrite::RulePushDownLimitUnion;
 use crate::optimizer::rule::rewrite::RulePushDownSortScan;
+use crate::optimizer::rule::rewrite::RuleRewritePivot;
 use crate::optimizer::rule::rewrite::RuleSplitAggregate;
 use crate::optimizer::rule::transform::RuleCommuteJoinBaseTable;
 use crate::optimizer::rule::transform::RuleExchangeJoin;
@@ -83,6 +84,7 @@ impl RuleFactory {
             RuleID::RightExchangeJoin => Ok(Box::new(RuleRightExchangeJoin::new())),
             RuleID::ExchangeJoin => Ok(Box::new(RuleExchangeJoin::new())),
             RuleID::PushDownPrewhere => Ok(Box::new(RulePushDownPrewhere::new(metadata))),
+            RuleID::RewritePivot => Ok(Box::new(RuleRewritePivot::new())),
         }
     }
 }

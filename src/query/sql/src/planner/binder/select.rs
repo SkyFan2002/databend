@@ -252,6 +252,7 @@ impl Binder {
                 .bind_limit(&bind_context, s_expr, None, &query.offset)
                 .await?;
         }
+        // TODO(Sky): pivot
 
         Ok((s_expr, bind_context))
     }

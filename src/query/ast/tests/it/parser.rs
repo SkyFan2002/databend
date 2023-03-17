@@ -618,3 +618,17 @@ fn test_expr_error() {
         run_parser!(file, expr, case);
     }
 }
+
+#[test]
+fn test_pivot() {
+    let pivot = r#"SELECT *
+        FROM monthly_sales
+        PIVOT(SUM(amount) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'APR'))
+        ORDER BY EMPID;"#;
+    let token = tokenize_sql(pivot).unwrap();
+    for t in &token {
+        println!("{:?}", t);
+    }
+    let (stmt, _) = parse_sql(&tokenize_sql(pivot).unwrap(), Dialect::PostgreSQL).unwrap();
+    println!("{:?}", stmt);
+}

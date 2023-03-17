@@ -160,6 +160,13 @@ pub enum TimeTravelPoint {
     Timestamp(Box<Expr>),
 }
 
+#[derive(Debug, Clone, PartialEq)]
+pub struct PivotMeta {
+    pub(crate) aggregate: Expr,
+    pub(crate) pivot_column: Identifier,
+    pub(crate) pivot_values: Vec<Expr>,
+}
+
 /// A table name or a parenthesized subquery with an optional alias
 #[derive(Debug, Clone, PartialEq)]
 pub enum TableReference {
@@ -171,6 +178,7 @@ pub enum TableReference {
         table: Identifier,
         alias: Option<TableAlias>,
         travel_point: Option<TimeTravelPoint>,
+        pivot: Option<PivotMeta>,
     },
     // `TABLE(expr)[ AS alias ]`
     TableFunction {
@@ -278,6 +286,7 @@ impl Display for TableReference {
                 table,
                 alias,
                 travel_point,
+                pivot,
             } => {
                 write_period_separated_list(
                     f,
@@ -294,6 +303,10 @@ impl Display for TableReference {
 
                 if let Some(alias) = alias {
                     write!(f, " AS {alias}")?;
+                }
+                if let Some(pivot) = pivot {
+                    // TODO(Sky) better format
+                    write!(f, " PIVOT")?;
                 }
             }
             TableReference::TableFunction {
@@ -521,6 +534,7 @@ impl Display for CTE {
         Ok(())
     }
 }
+
 impl Display for With {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         if self.recursive {

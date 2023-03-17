@@ -2162,6 +2162,7 @@ impl<'ast> Visitor<'ast> for AstFormatVisitor {
                 table,
                 alias,
                 travel_point,
+                pivot, // TODO(Sky)
             } => {
                 let mut name = String::new();
                 name.push_str("TableIdentifier ");
