@@ -529,6 +529,7 @@ impl Table for FuseTable {
         copied_files: Option<UpsertTableCopiedFileReq>,
         overwrite: bool,
     ) -> Result<()> {
+        //未来还可能支持什么类型的log?
         // only append operation supported currently
         let append_log_entries = operations
             .iter()

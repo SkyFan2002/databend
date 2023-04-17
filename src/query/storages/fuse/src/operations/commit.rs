@@ -127,7 +127,7 @@ impl FuseTable {
             {
                 Ok(_) => {
                     break {
-                        if transient {
+                        if transient { //只保存最新的快照
                             // Removes historical data, if table is transient
                             warn!(
                                 "transient table detected, purging historical data. ({})",
@@ -421,13 +421,13 @@ impl FuseTable {
                 }
                 TableSnapshot::cache().put(snapshot_location.clone(), Arc::new(snapshot));
                 // try keep a hit file of last snapshot
-                Self::write_last_snapshot_hint(operator, location_generator, snapshot_location)
+                Self::write_last_snapshot_hint(operator, location_generator, snapshot_location) //如果这里写失败了，这个最新的snapshot是不是丢失了？
                     .await;
                 Ok(())
             }
             Err(e) => {
                 // commit snapshot to meta server failed.
-                // figure out if the un-committed snapshot is safe to be removed.
+                // figure out if the un-committed snapshot is safe to be removed. 在哪些情况下unsafe?
                 if no_side_effects_in_meta_store(&e) {
                     // currently, only in this case (TableVersionMismatched),  we are SURE about
                     // that the table state insides meta store has NOT been changed.
