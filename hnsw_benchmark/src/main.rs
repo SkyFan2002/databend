@@ -1,6 +1,5 @@
+// mod test_1;
+mod test_2;
+// mod test_3;
 
-
-mod test_1;
-
-fn main(){
-}
+fn main() {}
