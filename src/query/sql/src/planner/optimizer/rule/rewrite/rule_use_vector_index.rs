@@ -84,9 +84,7 @@ impl Rule for RuleUseVectorIndex {
             .get(sort_operator.items[0].index)
             .unwrap();
         match &sort_by.scalar {
-            crate::ScalarExpr::FunctionCall(func) if func.func_name == "cosine_distance" => {
-                
-            }
+            crate::ScalarExpr::FunctionCall(func) if func.func_name == "cosine_distance" => {}
             _ => state.add_result(s_expr.clone()),
         }
         Ok(())
