@@ -230,6 +230,14 @@ impl SExpr {
 
         add_internal_column_index_into_child(expr, column_index, table_index)
     }
+
+    pub fn walk_down(&self, lvl: usize) -> &SExpr {
+        let mut expr = self;
+        for _ in 0..lvl {
+            expr = expr.child(0).unwrap();
+        }
+        expr
+    }
 }
 
 fn find_subquery(rel_op: &RelOperator) -> bool {
@@ -278,6 +286,7 @@ fn find_subquery(rel_op: &RelOperator) -> bool {
             .srfs
             .iter()
             .any(|expr| find_subquery_in_expr(&expr.scalar)),
+        RelOperator::IndexKnn(_) => false,
     }
 }
 

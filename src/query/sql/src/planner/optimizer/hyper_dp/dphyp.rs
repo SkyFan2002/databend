@@ -223,7 +223,8 @@ impl DPhpy {
             RelOperator::Window(_)
             | RelOperator::UnionAll(_)
             | RelOperator::DummyTableScan(_)
-            | RelOperator::RuntimeFilterSource(_) => Ok(false),
+            | RelOperator::RuntimeFilterSource(_)
+            | RelOperator::IndexKnn(_) => Ok(false),
         }
     }
 

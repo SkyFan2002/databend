@@ -17,6 +17,7 @@ use common_exception::ErrorCode;
 use crate::optimizer::rule::Rule;
 use crate::optimizer::RuleID;
 use crate::optimizer::SExpr;
+use crate::plans::IndexKnn;
 use crate::plans::PatternPlan;
 use crate::plans::RelOp;
 
@@ -66,25 +67,20 @@ impl Rule for RuleUseVectorIndex {
         s_expr: &crate::optimizer::SExpr,
         state: &mut crate::optimizer::rule::TransformResult,
     ) -> common_exception::Result<()> {
-        let sort_expr = s_expr.children.get(0).unwrap();
-        let sort_operator = s_expr.plan.as_sort().unwrap();
-        let eval_scalar_operator = sort_expr
-            .children
-            .get(0)
-            .unwrap()
-            .plan
-            .as_eval_scalar()
-            .unwrap();
-        if sort_operator.items.len() != 1 || sort_operator.items[0].asc != true {
+        let sort = s_expr.walk_down(1).plan.as_sort().unwrap();
+        let eval_scalar = s_expr.walk_down(2).plan.as_eval_scalar().unwrap();
+        if sort.items.len() != 1 || sort.items[0].asc != true {
             state.add_result(s_expr.clone());
             return Ok(());
         }
-        let sort_by = eval_scalar_operator
-            .items
-            .get(sort_operator.items[0].index)
-            .unwrap();
+        let sort_by = eval_scalar.items.get(sort.items[0].index).unwrap();
         match &sort_by.scalar {
-            crate::ScalarExpr::FunctionCall(func) if func.func_name == "cosine_distance" => {}
+            crate::ScalarExpr::FunctionCall(func) if func.func_name == "cosine_distance" => {
+                // TODO judge if index exists
+                let child = s_expr.walk_down(3);
+                let result = SExpr::create_unary(IndexKnn {}.into(), child.clone());
+                state.add_result(result);
+            }
             _ => state.add_result(s_expr.clone()),
         }
         Ok(())

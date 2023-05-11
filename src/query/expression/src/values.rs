@@ -108,8 +108,8 @@ pub enum Scalar {
     Boolean(bool),
     String(Vec<u8>),
     Array(Column),
-    Map(Column),
     Bitmap(Vec<u8>),
+    Map(Column),
     Tuple(Vec<Scalar>),
     Variant(Vec<u8>),
 }

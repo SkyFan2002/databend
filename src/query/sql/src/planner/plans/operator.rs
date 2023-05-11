@@ -29,6 +29,7 @@ use super::pattern::PatternPlan;
 use super::scan::Scan;
 use super::sort::Sort;
 use super::union_all::UnionAll;
+use super::IndexKnn;
 use crate::optimizer::PhysicalProperty;
 use crate::optimizer::RelExpr;
 use crate::optimizer::RelationalProperty;
@@ -98,6 +99,7 @@ pub enum RelOperator {
     RuntimeFilterSource(RuntimeFilterSource),
     Window(Window),
     ProjectSet(ProjectSet),
+    IndexKnn(IndexKnn),
 
     Pattern(PatternPlan),
 }
@@ -119,6 +121,7 @@ impl Operator for RelOperator {
             RelOperator::RuntimeFilterSource(rel_op) => rel_op.rel_op(),
             RelOperator::ProjectSet(rel_op) => rel_op.rel_op(),
             RelOperator::Window(rel_op) => rel_op.rel_op(),
+            RelOperator::IndexKnn(rel_op) => rel_op.rel_op(),
         }
     }
 
@@ -138,6 +141,7 @@ impl Operator for RelOperator {
             RelOperator::RuntimeFilterSource(rel_op) => rel_op.derive_relational_prop(rel_expr),
             RelOperator::ProjectSet(rel_op) => rel_op.derive_relational_prop(rel_expr),
             RelOperator::Window(rel_op) => rel_op.derive_relational_prop(rel_expr),
+            RelOperator::IndexKnn(rel_op) => rel_op.derive_relational_prop(rel_expr),
         }
     }
 
@@ -157,6 +161,7 @@ impl Operator for RelOperator {
             RelOperator::RuntimeFilterSource(rel_op) => rel_op.derive_physical_prop(rel_expr),
             RelOperator::ProjectSet(rel_op) => rel_op.derive_physical_prop(rel_expr),
             RelOperator::Window(rel_op) => rel_op.derive_physical_prop(rel_expr),
+            RelOperator::IndexKnn(rel_op) => rel_op.derive_physical_prop(rel_expr),
         }
     }
 
@@ -176,6 +181,7 @@ impl Operator for RelOperator {
             RelOperator::RuntimeFilterSource(rel_op) => rel_op.derive_cardinality(rel_expr),
             RelOperator::ProjectSet(rel_op) => rel_op.derive_cardinality(rel_expr),
             RelOperator::Window(rel_op) => rel_op.derive_cardinality(rel_expr),
+            RelOperator::IndexKnn(rel_op) => rel_op.derive_cardinality(rel_expr),
         }
     }
 
@@ -227,6 +233,9 @@ impl Operator for RelOperator {
                 rel_op.compute_required_prop_child(ctx, rel_expr, child_index, required)
             }
             RelOperator::ProjectSet(rel_op) => {
+                rel_op.compute_required_prop_child(ctx, rel_expr, child_index, required)
+            }
+            RelOperator::IndexKnn(rel_op) => {
                 rel_op.compute_required_prop_child(ctx, rel_expr, child_index, required)
             }
         }
@@ -491,5 +500,11 @@ impl TryFrom<RelOperator> for ProjectSet {
                 "Cannot downcast RelOperator to ProjectSet",
             ))
         }
+    }
+}
+
+impl From<IndexKnn> for RelOperator {
+    fn from(value: IndexKnn) -> Self {
+        Self::IndexKnn(value)
     }
 }

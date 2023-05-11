@@ -76,6 +76,7 @@ impl Display for FormatContext {
                 RelOperator::RuntimeFilterSource(_) => write!(f, "RuntimeFilterSource"),
                 RelOperator::Window(_) => write!(f, "WindowFunc"),
                 RelOperator::ProjectSet(_) => write!(f, "ProjectSet"),
+                RelOperator::IndexKnn(_) => write!(f, "IndexKnn"),
             },
             Self::Text(text) => write!(f, "{}", text),
         }
