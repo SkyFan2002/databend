@@ -32,7 +32,7 @@ impl RuleUseVectorIndex {
             id: RuleID::UseVectorIndex,
             // Limit
             //   \
-            //   Sort(cosine_distance)
+            //   Sort
             //     \
             //     EvalScalar
             patterns: vec![SExpr::create_unary(
@@ -81,7 +81,9 @@ impl Rule for RuleUseVectorIndex {
                 let result = SExpr::create_unary(IndexKnn {}.into(), child.clone());
                 state.add_result(result);
             }
-            _ => state.add_result(s_expr.clone()),
+            _ => {
+                state.add_result(s_expr.clone());
+            }
         }
         Ok(())
     }

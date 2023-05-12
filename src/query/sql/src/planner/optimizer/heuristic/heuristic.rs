@@ -17,6 +17,7 @@ use std::sync::Arc;
 use common_catalog::table_context::TableContext;
 use common_exception::Result;
 use once_cell::sync::Lazy;
+use tracing::info;
 
 use super::prune_unused_columns::UnusedColumnPruner;
 use crate::optimizer::heuristic::decorrelate::decorrelate_subquery;
@@ -40,6 +41,7 @@ pub static DEFAULT_REWRITE_RULES: Lazy<Vec<RuleID>> = Lazy::new(|| {
         RuleID::PushDownFilterAggregate,
         RuleID::PushDownLimitUnion,
         RuleID::RulePushDownLimitExpression,
+        RuleID::UseVectorIndex, // UseVectorIndex should be before PushDownLimitSort
         RuleID::PushDownLimitSort,
         RuleID::PushDownLimitAggregate,
         RuleID::PushDownLimitOuterJoin,
@@ -122,6 +124,7 @@ impl HeuristicOptimizer {
             let rule = RuleFactory::create_rule(*rule_id, self.metadata.clone())?;
             let mut state = TransformResult::new();
             if s_expr.match_pattern(&rule.patterns()[0]) && !s_expr.applied_rule(&rule.id()) {
+                eprintln!("apply rule: {}", rule.id());
                 s_expr.set_applied_rule(&rule.id());
                 rule.apply(&s_expr, &mut state)?;
                 if !state.results().is_empty() {
