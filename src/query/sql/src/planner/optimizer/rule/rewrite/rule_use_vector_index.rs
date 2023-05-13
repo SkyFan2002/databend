@@ -45,11 +45,17 @@ impl RuleUseVectorIndex {
                         plan_type: RelOp::Sort,
                     }
                     .into(),
-                    SExpr::create_leaf(
+                    SExpr::create_unary(
                         PatternPlan {
                             plan_type: RelOp::EvalScalar,
                         }
                         .into(),
+                        SExpr::create_leaf(
+                            PatternPlan {
+                                plan_type: RelOp::Pattern,
+                            }
+                            .into(),
+                        ),
                     ),
                 ),
             )],

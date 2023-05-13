@@ -100,7 +100,7 @@ impl HeuristicOptimizer {
         let pre_optimized = self.pre_optimize(s_expr)?;
         let optimized = self.optimize_expression(&pre_optimized)?;
         let post_optimized = self.post_optimize(optimized)?;
-
+        eprintln!("optimized: {:?}", post_optimized);
         Ok(post_optimized)
     }
 
@@ -123,6 +123,7 @@ impl HeuristicOptimizer {
         for rule_id in DEFAULT_REWRITE_RULES.iter() {
             let rule = RuleFactory::create_rule(*rule_id, self.metadata.clone())?;
             let mut state = TransformResult::new();
+            eprintln!("try rule: {} on s_expr: {:?}", rule.id(), s_expr);
             if s_expr.match_pattern(&rule.patterns()[0]) && !s_expr.applied_rule(&rule.id()) {
                 eprintln!("apply rule: {}", rule.id());
                 s_expr.set_applied_rule(&rule.id());

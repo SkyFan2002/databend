@@ -130,10 +130,21 @@ impl SExpr {
         if pattern.plan.rel_op() != RelOp::Pattern {
             // Pattern is plan
             if self.plan.rel_op() != pattern.plan.rel_op() {
+                eprintln!(
+                    "Pattern plan type mismatch: {:?} vs {:?}",
+                    self.plan.rel_op(),
+                    pattern.plan.rel_op()
+                );
                 return false;
             }
 
             if self.arity() != pattern.arity() {
+                eprintln!(
+                    "Pattern arity mismatch: {} vs {}",
+                    self.arity(),
+                    pattern.arity()
+                );
+                eprintln!("Pattern: {:?}", pattern);
                 // Check if current expression has same arity with current pattern
                 return false;
             }
