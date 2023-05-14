@@ -79,7 +79,11 @@ impl Rule for RuleUseVectorIndex {
             state.add_result(s_expr.clone());
             return Ok(());
         }
-        let sort_by = eval_scalar.items.get(sort.items[0].index).unwrap();
+        let sort_by = eval_scalar
+            .items
+            .iter()
+            .find(|item| item.index == sort.items[0].index)
+            .unwrap();
         match &sort_by.scalar {
             crate::ScalarExpr::FunctionCall(func) if func.func_name == "cosine_distance" => {
                 // TODO judge if index exists
