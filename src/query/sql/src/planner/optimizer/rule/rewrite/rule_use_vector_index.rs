@@ -20,6 +20,7 @@ use crate::optimizer::SExpr;
 use crate::plans::IndexKnn;
 use crate::plans::PatternPlan;
 use crate::plans::RelOp;
+use crate::ScalarExpr;
 
 pub struct RuleUseVectorIndex {
     id: RuleID,
@@ -73,9 +74,14 @@ impl Rule for RuleUseVectorIndex {
         s_expr: &crate::optimizer::SExpr,
         state: &mut crate::optimizer::rule::TransformResult,
     ) -> common_exception::Result<()> {
+        let limit = s_expr.plan.as_limit().unwrap();
         let sort = s_expr.walk_down(1).plan.as_sort().unwrap();
         let eval_scalar = s_expr.walk_down(2).plan.as_eval_scalar().unwrap();
-        if sort.items.len() != 1 || sort.items[0].asc != true {
+        let is_knn = limit.limit.is_some()
+            && limit.offset == 0
+            && sort.items.len() == 1
+            && sort.items[0].asc;
+        if !is_knn {
             state.add_result(s_expr.clone());
             return Ok(());
         }
@@ -85,10 +91,16 @@ impl Rule for RuleUseVectorIndex {
             .find(|item| item.index == sort.items[0].index)
             .unwrap();
         match &sort_by.scalar {
-            crate::ScalarExpr::FunctionCall(func) if func.func_name == "cosine_distance" => {
+            ScalarExpr::FunctionCall(func) if func.func_name == "cosine_distance" => {
                 // TODO judge if index exists
                 let child = s_expr.walk_down(3);
-                let result = SExpr::create_unary(IndexKnn {}.into(), child.clone());
+                let result = SExpr::create_unary(
+                    IndexKnn {
+                        limit: limit.limit.unwrap(),
+                    }
+                    .into(),
+                    child.clone(),
+                );
                 state.add_result(result);
             }
             _ => {

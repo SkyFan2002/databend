@@ -247,6 +247,8 @@ impl UnusedColumnPruner {
 
             RelOperator::DummyTableScan(_) => Ok(expr.clone()),
 
+            RelOperator::IndexKnn(_) => Ok(expr.clone()),
+
             _ => Err(ErrorCode::Internal(
                 "Attempting to prune columns of a physical plan is not allowed",
             )),

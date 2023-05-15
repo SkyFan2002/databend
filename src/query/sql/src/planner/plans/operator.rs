@@ -78,6 +78,7 @@ pub enum RelOp {
     RuntimeFilterSource,
     Window,
     ProjectSet,
+    IndexKnn,
 
     // Pattern
     Pattern,

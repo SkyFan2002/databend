@@ -645,6 +645,17 @@ impl RuntimeFilterSource {
 }
 
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
+pub struct IndexKnn {
+    pub input: Box<PhysicalPlan>,
+}
+
+impl IndexKnn {
+    pub fn output_schema(&self) -> Result<DataSchemaRef> {
+        todo!()
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PhysicalPlan {
     TableScan(TableScan),
     Filter(Filter),
@@ -669,6 +680,8 @@ pub enum PhysicalPlan {
     /// Synthesized by fragmenter
     ExchangeSource(ExchangeSource),
     ExchangeSink(ExchangeSink),
+
+    IndexKnn(IndexKnn),
 }
 
 impl PhysicalPlan {
@@ -701,6 +714,7 @@ impl PhysicalPlan {
             PhysicalPlan::DistributedInsertSelect(plan) => plan.output_schema(),
             PhysicalPlan::ProjectSet(plan) => plan.output_schema(),
             PhysicalPlan::RuntimeFilterSource(plan) => plan.output_schema(),
+            PhysicalPlan::IndexKnn(plan) => plan.output_schema(),
         }
     }
 
@@ -725,6 +739,7 @@ impl PhysicalPlan {
             PhysicalPlan::ExchangeSink(_) => "Exchange Sink".to_string(),
             PhysicalPlan::ProjectSet(_) => "Unnest".to_string(),
             PhysicalPlan::RuntimeFilterSource(_) => "RuntimeFilterSource".to_string(),
+            PhysicalPlan::IndexKnn(_) => "IndexKnn".to_string(),
         }
     }
 
@@ -758,6 +773,7 @@ impl PhysicalPlan {
                 std::iter::once(plan.left_side.as_ref())
                     .chain(std::iter::once(plan.right_side.as_ref())),
             ),
+            PhysicalPlan::IndexKnn(plan) => Box::new(std::iter::once(plan.input.as_ref())),
         }
     }
 
@@ -776,6 +792,7 @@ impl PhysicalPlan {
             PhysicalPlan::DistributedInsertSelect(plan) => plan.input.try_find_single_data_source(),
             PhysicalPlan::ProjectSet(plan) => plan.input.try_find_single_data_source(),
             PhysicalPlan::RowFetch(plan) => plan.input.try_find_single_data_source(),
+            PhysicalPlan::IndexKnn(plan) => plan.input.try_find_single_data_source(),
             PhysicalPlan::RuntimeFilterSource(_)
             | PhysicalPlan::UnionAll(_)
             | PhysicalPlan::ExchangeSource(_)

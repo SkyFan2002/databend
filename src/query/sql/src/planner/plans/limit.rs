@@ -55,13 +55,7 @@ impl Operator for Limit {
     }
 
     fn derive_relational_prop(&self, rel_expr: &RelExpr) -> Result<RelationalProperty> {
-        let input_prop = rel_expr.derive_relational_prop_child(0)?;
-
-        Ok(RelationalProperty {
-            output_columns: input_prop.output_columns,
-            outer_columns: input_prop.outer_columns,
-            used_columns: input_prop.used_columns,
-        })
+        rel_expr.derive_relational_prop_child(0)
     }
 
     fn derive_cardinality(&self, rel_expr: &RelExpr) -> Result<StatInfo> {

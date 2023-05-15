@@ -24,6 +24,7 @@ use super::ExchangeSink;
 use super::ExchangeSource;
 use super::Filter;
 use super::HashJoin;
+use super::IndexKnn;
 use super::Limit;
 use super::PhysicalPlan;
 use super::Project;
@@ -57,6 +58,7 @@ pub trait PhysicalPlanReplacer {
             PhysicalPlan::DistributedInsertSelect(plan) => self.replace_insert_select(plan),
             PhysicalPlan::ProjectSet(plan) => self.replace_project_set(plan),
             PhysicalPlan::RuntimeFilterSource(plan) => self.replace_runtime_filter_source(plan),
+            PhysicalPlan::IndexKnn(plan) => self.replace_index_knn(plan),
         }
     }
 
@@ -289,6 +291,13 @@ pub trait PhysicalPlanReplacer {
             right_runtime_filters: plan.right_runtime_filters.clone(),
         }))
     }
+
+    fn replace_index_knn(&mut self, plan: &IndexKnn) -> Result<PhysicalPlan> {
+        let input = self.replace(&plan.input)?;
+        Ok(PhysicalPlan::IndexKnn(IndexKnn {
+            input: Box::new(input),
+        }))
+    }
 }
 
 impl PhysicalPlan {
@@ -356,6 +365,9 @@ impl PhysicalPlan {
                 PhysicalPlan::RuntimeFilterSource(plan) => {
                     Self::traverse(&plan.left_side, pre_visit, visit, post_visit);
                     Self::traverse(&plan.right_side, pre_visit, visit, post_visit);
+                }
+                PhysicalPlan::IndexKnn(plan) => {
+                    Self::traverse(&plan.input, pre_visit, visit, post_visit);
                 }
             }
             post_visit(plan);

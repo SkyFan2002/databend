@@ -27,6 +27,7 @@ use super::EvalScalar;
 use super::Exchange;
 use super::Filter;
 use super::HashJoin;
+use super::IndexKnn;
 use super::Limit;
 use super::PhysicalPlan;
 use super::Project;
@@ -146,6 +147,7 @@ fn to_format_tree(
         PhysicalPlan::RuntimeFilterSource(plan) => {
             runtime_filter_source_to_format_tree(plan, metadata, prof_span_set)
         }
+        PhysicalPlan::IndexKnn(plan) => index_knn_to_format_tree(plan, metadata, prof_span_set),
     }
 }
 
@@ -875,4 +877,12 @@ fn runtime_filter_source_to_format_tree(
         "RuntimeFilterSource".to_string(),
         children,
     ))
+}
+
+fn index_knn_to_format_tree(
+    plan: &IndexKnn,
+    metadata: &MetadataRef,
+    prof_span_set: &ProfSpanSetRef,
+) -> Result<FormatTreeNode<String>> {
+    todo!()
 }

@@ -20,6 +20,7 @@ use itertools::Itertools;
 
 use super::AggregateExpand;
 use super::DistributedInsertSelect;
+use super::IndexKnn;
 use super::ProjectSet;
 use super::RowFetch;
 use crate::executor::AggregateFinal;
@@ -75,6 +76,7 @@ impl<'a> Display for PhysicalPlanIndentFormatDisplay<'a> {
             PhysicalPlan::DistributedInsertSelect(insert_select) => write!(f, "{}", insert_select)?,
             PhysicalPlan::ProjectSet(unnest) => write!(f, "{}", unnest)?,
             PhysicalPlan::RuntimeFilterSource(plan) => write!(f, "{}", plan)?,
+            PhysicalPlan::IndexKnn(plan) => write!(f, "{}", plan)?,
         }
 
         for node in self.node.children() {
@@ -357,5 +359,11 @@ impl Display for ProjectSet {
             "ProjectSet: set-returning functions : {}",
             scalars.join(", ")
         )
+    }
+}
+
+impl Display for IndexKnn {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        todo!()
     }
 }

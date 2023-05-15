@@ -56,6 +56,7 @@ use common_sql::executor::ExchangeSink;
 use common_sql::executor::ExchangeSource;
 use common_sql::executor::Filter;
 use common_sql::executor::HashJoin;
+use common_sql::executor::IndexKnn;
 use common_sql::executor::Limit;
 use common_sql::executor::PhysicalPlan;
 use common_sql::executor::Project;
@@ -195,6 +196,7 @@ impl PipelineBuilder {
             PhysicalPlan::RuntimeFilterSource(runtime_filter_source) => {
                 self.build_runtime_filter_source(runtime_filter_source)
             }
+            PhysicalPlan::IndexKnn(index_knn) => self.build_index_knn(index_knn),
         }
     }
 
@@ -1359,5 +1361,9 @@ impl PipelineBuilder {
             runtime_filter_source.left_runtime_filters.clone(),
             runtime_filter_source.right_runtime_filters.clone(),
         )))
+    }
+
+    pub fn build_index_knn(&mut self, index_knn: &IndexKnn) -> Result<()> {
+        todo!()
     }
 }
