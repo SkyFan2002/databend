@@ -85,21 +85,28 @@ impl Rule for RuleUseVectorIndex {
             state.add_result(s_expr.clone());
             return Ok(());
         }
-        let sort_by = eval_scalar
+        let sort_by_idx = eval_scalar
             .items
             .iter()
-            .find(|item| item.index == sort.items[0].index)
+            .position(|item| item.index == sort.items[0].index)
             .unwrap();
+        let sort_by = &eval_scalar.items[sort_by_idx];
         match &sort_by.scalar {
             ScalarExpr::FunctionCall(func) if func.func_name == "cosine_distance" => {
                 // TODO judge if index exists
-                let child = s_expr.walk_down(3);
+                let mut child = s_expr.walk_down(2).clone();
+                child
+                    .plan
+                    .as_eval_scalar_mut()
+                    .unwrap()
+                    .items
+                    .remove(sort_by_idx);
                 let result = SExpr::create_unary(
                     IndexKnn {
                         limit: limit.limit.unwrap(),
                     }
                     .into(),
-                    child.clone(),
+                    child,
                 );
                 state.add_result(result);
             }
