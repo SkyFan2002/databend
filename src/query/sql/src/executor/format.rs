@@ -884,5 +884,10 @@ fn index_knn_to_format_tree(
     metadata: &MetadataRef,
     prof_span_set: &ProfSpanSetRef,
 ) -> Result<FormatTreeNode<String>> {
-    todo!()
+    let mut children = vec![FormatTreeNode::new(format!("limit: {}", plan.limit))];
+    children.push(to_format_tree(&plan.input, metadata, prof_span_set)?);
+    Ok(FormatTreeNode::with_children(
+        "IndexKnn".to_string(),
+        children,
+    ))
 }

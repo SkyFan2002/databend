@@ -58,9 +58,9 @@ impl Operator for IndexKnn {
 
     fn compute_required_prop_child(
         &self,
-        ctx: std::sync::Arc<dyn common_catalog::table_context::TableContext>,
-        rel_expr: &crate::optimizer::RelExpr,
-        child_index: usize,
+        _ctx: std::sync::Arc<dyn common_catalog::table_context::TableContext>,
+        _rel_expr: &crate::optimizer::RelExpr,
+        _child_index: usize,
         required: &crate::optimizer::RequiredProperty,
     ) -> common_exception::Result<crate::optimizer::RequiredProperty> {
         let mut required = required.clone();

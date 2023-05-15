@@ -646,12 +646,17 @@ impl RuntimeFilterSource {
 
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub struct IndexKnn {
+    // A unique id of operator in a `PhysicalPlan` tree.
+    // Only used for display.
+    pub plan_id: u32,
+
     pub input: Box<PhysicalPlan>,
+    pub limit: usize,
 }
 
 impl IndexKnn {
     pub fn output_schema(&self) -> Result<DataSchemaRef> {
-        todo!()
+        self.input.output_schema()
     }
 }
 

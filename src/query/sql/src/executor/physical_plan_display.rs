@@ -364,6 +364,6 @@ impl Display for ProjectSet {
 
 impl Display for IndexKnn {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        todo!()
+        write!(f, "IndexKnn: limit: [{}]", self.limit)
     }
 }

@@ -76,6 +76,7 @@ use common_storages_fuse::operations::FillInternalColumnProcessor;
 use petgraph::matrix_graph::Zero;
 
 use super::processors::transforms::FrameBound;
+use super::processors::transforms::TransformIndexKnn;
 use super::processors::transforms::WindowFunctionInfo;
 use super::processors::ProfileWrapper;
 use super::processors::TransformExpandGroupingSets;
@@ -127,8 +128,8 @@ pub struct PipelineBuilder {
     // record the index of join build side pipeline in `pipelines`
     pub index: Option<usize>,
 
-    enable_profiling: bool,
     prof_span_set: ProfSpanSetRef,
+    enable_profiling: bool,
     exchange_injector: Arc<dyn ExchangeInjector>,
 }
 
@@ -1364,6 +1365,18 @@ impl PipelineBuilder {
     }
 
     pub fn build_index_knn(&mut self, index_knn: &IndexKnn) -> Result<()> {
-        todo!()
+        self.build_pipeline(&index_knn.input)?;
+        self.main_pipeline.add_transform(|input, output| {
+            let transform = TransformIndexKnn::try_create(input, output, index_knn.limit)?;
+            if self.enable_profiling {
+                Ok(ProcessorPtr::create(ProfileWrapper::create(
+                    transform,
+                    index_knn.plan_id,
+                    self.prof_span_set.clone(),
+                )))
+            } else {
+                Ok(ProcessorPtr::create(transform))
+            }
+        })
     }
 }

@@ -50,6 +50,7 @@ use super::AggregatePartial;
 use super::Exchange as PhysicalExchange;
 use super::Filter;
 use super::HashJoin;
+use super::IndexKnn;
 use super::Limit;
 use super::ProjectSet;
 use super::RowFetch;
@@ -1044,6 +1045,15 @@ impl PhysicalPlanBuilder {
                     input: Box::new(input),
                     srf_exprs,
                     stat_info: Some(stat_info),
+                }))
+            }
+
+            RelOperator::IndexKnn(index_knn) => {
+                let input = self.build(s_expr.child(0)?).await?;
+                Ok(PhysicalPlan::IndexKnn(IndexKnn {
+                    plan_id: self.next_plan_id(),
+                    input: Box::new(input),
+                    limit: index_knn.limit,
                 }))
             }
 

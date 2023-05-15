@@ -295,7 +295,9 @@ pub trait PhysicalPlanReplacer {
     fn replace_index_knn(&mut self, plan: &IndexKnn) -> Result<PhysicalPlan> {
         let input = self.replace(&plan.input)?;
         Ok(PhysicalPlan::IndexKnn(IndexKnn {
+            plan_id: plan.plan_id,
             input: Box::new(input),
+            limit: plan.limit,
         }))
     }
 }
