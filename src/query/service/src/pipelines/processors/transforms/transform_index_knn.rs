@@ -2,6 +2,7 @@ use std::any::Any;
 use std::sync::Arc;
 
 use common_exception::Result;
+use common_expression::DataBlock;
 use common_pipeline_core::processors::port::InputPort;
 use common_pipeline_core::processors::port::OutputPort;
 use common_pipeline_core::processors::processor::Event;
@@ -11,6 +12,7 @@ pub struct TransformIndexKnn {
     input: Arc<InputPort>,
     output: Arc<OutputPort>,
     limit: usize,
+    finished: bool,
 }
 
 impl TransformIndexKnn {
@@ -23,6 +25,7 @@ impl TransformIndexKnn {
             input,
             output,
             limit,
+            finished: false,
         }))
     }
 }
@@ -30,7 +33,7 @@ impl TransformIndexKnn {
 #[async_trait::async_trait]
 impl Processor for TransformIndexKnn {
     fn name(&self) -> String {
-        "HashJoinProbe".to_string()
+        "TransformIndexKnn".to_string()
     }
 
     fn as_any(&mut self) -> &mut dyn Any {
@@ -38,19 +41,16 @@ impl Processor for TransformIndexKnn {
     }
 
     fn event(&mut self) -> Result<Event> {
-        todo!()
-    }
-
-    fn interrupt(&self) {
-        todo!()
+        if !self.finished {
+            return Ok(Event::Sync);
+        }
+        self.input.finish();
+        self.output.finish();
+        Ok(Event::Finished)
     }
 
     fn process(&mut self) -> Result<()> {
-        todo!()
-    }
-
-    #[async_backtrace::framed]
-    async fn async_process(&mut self) -> Result<()> {
-        todo!()
+        self.finished = true;
+        Ok(())
     }
 }
