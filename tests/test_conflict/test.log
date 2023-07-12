@@ -1,0 +1,3038 @@
+insert done 1
+insert done 2
+insert done 3
+insert done 4
+insert done 5
+insert done 6
+insert done 7
+insert done 8
+insert done 9
+insert done 10
+insert done 11
+insert done 12
+insert done 13
+insert done 14
+insert done 15
+insert done 16
+insert done 17
+insert done 18
+insert done 19
+insert done 20
+insert done 21
+insert done 22
+insert done 23
+insert done 24
+insert done 25
+insert done 26
+insert done 27
+insert done 28
+insert done 29
+insert done 30
+insert done 31
+insert done 32
+insert done 33
+insert done 34
+insert done 35
+insert done 36
+insert done 37
+insert done 38
+insert done 39
+insert done 40
+insert done 41
+insert done 42
+insert done 43
+insert done 44
+insert done 45
+insert done 46
+insert done 47
+insert done 48
+insert done 49
+insert done 50
+insert done 51
+insert done 52
+insert done 53
+insert done 54
+insert done 55
+insert done 56
+insert done 57
+insert done 58
+insert done 59
+insert done 60
+insert done 61
+insert done 62
+insert done 63
+insert done 64
+insert done 65
+insert done 66
+insert done 67
+insert done 68
+insert done 69
+insert done 70
+insert done 71
+insert done 72
+insert done 73
+insert done 74
+insert done 75
+insert done 76
+insert done 77
+insert done 78
+insert done 79
+insert done 80
+insert done 81
+insert done 82
+insert done 83
+insert done 84
+insert done 85
+insert done 86
+insert done 87
+insert done 88
+insert done 89
+insert done 90
+insert done 91
+insert done 92
+insert done 93
+insert done 94
+insert done 95
+insert done 96
+insert done 97
+insert done 98
+insert done 99
+insert done 100
+sum done
+insert done
+delete start, 0
+optimize start, 0
+compact segment done, 0
+delete done, 0
+delete start, 1
+delete done, 1
+delete start, 2
+compact block done, 0
+optimize start, 1
+compact segment done, 1
+delete done, 2
+delete start, 3
+compact block done, 1
+optimize start, 2
+delete done, 3
+delete start, 4
+compact segment done, 2
+delete done, 4
+delete start, 5
+delete failed APIError: ResponseError with 4000: mutation conflicts, concurrent mutation detected while committing segment compaction operation
+delete start, 6
+compact block done, 2
+optimize start, 3
+compact segment done, 3
+compact block done, 3
+optimize start, 4
+delete done, 6
+delete start, 7
+compact segment done, 4
+compact block done, 4
+optimize start, 5
+compact segment done, 5
+delete done, 7
+delete start, 8
+compact block done, 5
+optimize start, 6
+compact segment done, 6
+delete done, 8
+delete start, 9
+compact block done, 6
+optimize start, 7
+compact segment done, 7
+compact block done, 7
+optimize start, 8
+delete done, 9
+delete start, 10
+compact segment done, 8
+compact block done, 8
+optimize start, 9
+compact segment done, 9
+delete done, 10
+delete start, 11
+compact block done, 9
+optimize start, 10
+compact segment done, 10
+delete done, 11
+delete start, 12
+compact block done, 10
+optimize start, 11
+compact segment done, 11
+delete done, 12
+delete start, 13
+compact block done, 11
+optimize start, 12
+compact segment done, 12
+delete done, 13
+delete start, 14
+compact block done, 12
+optimize start, 13
+compact segment done, 13
+delete done, 14
+delete start, 15
+compact block done, 13
+optimize start, 14
+compact segment done, 14
+compact block done, 14
+optimize start, 15
+delete done, 15
+delete start, 16
+compact segment done, 15
+compact block done, 15
+optimize start, 16
+delete done, 16
+delete start, 17
+compact segment done, 16
+compact block done, 16
+optimize start, 17
+delete done, 17
+delete start, 18
+compact segment done, 17
+compact block done, 17
+optimize start, 18
+compact segment done, 18
+delete done, 18
+delete start, 19
+compact block done, 18
+optimize start, 19
+compact segment done, 19
+compact block done, 19
+optimize start, 20
+delete done, 19
+delete start, 20
+compact segment done, 20
+compact block done, 20
+optimize start, 21
+delete done, 20
+delete start, 21
+compact segment done, 21
+compact block done, 21
+optimize start, 22
+delete done, 21
+delete start, 22
+compact segment done, 22
+compact block done, 22
+optimize start, 23
+compact segment done, 23
+delete done, 22
+delete start, 23
+compact block done, 23
+optimize start, 24
+compact segment done, 24
+delete done, 23
+delete start, 24
+compact block done, 24
+optimize start, 25
+compact segment done, 25
+delete done, 24
+delete start, 25
+compact block done, 25
+optimize start, 26
+delete done, 25
+delete start, 26
+compact segment done, 26
+compact block done, 26
+optimize start, 27
+compact segment done, 27
+delete done, 26
+delete start, 27
+compact block done, 27
+optimize start, 28
+compact segment done, 28
+delete done, 27
+delete start, 28
+compact block done, 28
+optimize start, 29
+compact segment done, 29
+delete done, 28
+delete start, 29
+compact block done, 29
+optimize start, 30
+compact segment done, 30
+delete done, 29
+delete start, 30
+compact block done, 30
+optimize start, 31
+compact segment done, 31
+compact block done, 31
+optimize start, 32
+delete done, 30
+delete start, 31
+compact segment done, 32
+compact block done, 32
+optimize start, 33
+delete done, 31
+delete start, 32
+compact segment done, 33
+compact block done, 33
+optimize start, 34
+delete done, 32
+delete start, 33
+compact segment done, 34
+compact block done, 34
+optimize start, 35
+compact segment done, 35
+delete done, 33
+delete start, 34
+compact block done, 35
+optimize start, 36
+compact segment done, 36
+compact block done, 36
+optimize start, 37
+delete done, 34
+delete start, 35
+compact segment done, 37
+compact block done, 37
+optimize start, 38
+compact segment done, 38
+delete done, 35
+delete start, 36
+compact block done, 38
+optimize start, 39
+compact segment done, 39
+delete done, 36
+delete start, 37
+compact block done, 39
+optimize start, 40
+compact segment done, 40
+compact block done, 40
+optimize start, 41
+delete done, 37
+delete start, 38
+compact segment done, 41
+compact block done, 41
+optimize start, 42
+compact segment done, 42
+delete done, 38
+delete start, 39
+compact block done, 42
+optimize start, 43
+compact segment done, 43
+delete done, 39
+delete start, 40
+compact block done, 43
+optimize start, 44
+compact segment done, 44
+delete done, 40
+delete start, 41
+compact block done, 44
+optimize start, 45
+compact segment done, 45
+compact block done, 45
+optimize start, 46
+delete done, 41
+delete start, 42
+compact segment done, 46
+compact block done, 46
+optimize start, 47
+delete done, 42
+delete start, 43
+compact segment done, 47
+compact block done, 47
+optimize start, 48
+delete done, 43
+delete start, 44
+compact segment done, 48
+compact block done, 48
+optimize start, 49
+compact segment done, 49
+delete done, 44
+delete start, 45
+compact block done, 49
+optimize start, 50
+compact segment done, 50
+delete done, 45
+delete start, 46
+compact block done, 50
+optimize start, 51
+delete done, 46
+delete start, 47
+compact segment done, 51
+compact block done, 51
+optimize start, 52
+delete done, 47
+delete start, 48
+compact segment done, 52
+compact block done, 52
+optimize start, 53
+delete done, 48
+delete start, 49
+compact segment done, 53
+compact block done, 53
+optimize start, 54
+compact segment done, 54
+delete done, 49
+delete start, 50
+compact block done, 54
+optimize start, 55
+compact segment done, 55
+compact block done, 55
+optimize start, 56
+compact segment done, 56
+delete done, 50
+delete start, 51
+compact block done, 56
+optimize start, 57
+compact segment done, 57
+compact block done, 57
+optimize start, 58
+delete done, 51
+delete start, 52
+compact segment done, 58
+compact block done, 58
+optimize start, 59
+compact segment done, 59
+delete done, 52
+delete start, 53
+compact block done, 59
+optimize start, 60
+compact segment done, 60
+delete done, 53
+delete start, 54
+compact block done, 60
+optimize start, 61
+compact segment done, 61
+delete done, 54
+delete start, 55
+compact block done, 61
+optimize start, 62
+compact segment done, 62
+delete done, 55
+delete start, 56
+compact block done, 62
+optimize start, 63
+compact segment done, 63
+compact block done, 63
+optimize start, 64
+delete done, 56
+delete start, 57
+compact segment done, 64
+compact block done, 64
+optimize start, 65
+delete done, 57
+delete start, 58
+compact segment done, 65
+compact block done, 65
+optimize start, 66
+compact segment done, 66
+delete done, 58
+delete start, 59
+compact block done, 66
+optimize start, 67
+compact segment done, 67
+delete done, 59
+delete start, 60
+compact block done, 67
+optimize start, 68
+compact segment done, 68
+compact block done, 68
+optimize start, 69
+delete done, 60
+delete start, 61
+compact segment done, 69
+compact block done, 69
+optimize start, 70
+compact segment done, 70
+delete done, 61
+delete start, 62
+compact block done, 70
+optimize start, 71
+compact segment done, 71
+delete done, 62
+delete start, 63
+compact block done, 71
+optimize start, 72
+compact segment done, 72
+compact block done, 72
+optimize start, 73
+delete done, 63
+delete start, 64
+compact segment done, 73
+compact block done, 73
+optimize start, 74
+delete done, 64
+delete start, 65
+compact segment done, 74
+compact block done, 74
+optimize start, 75
+compact segment done, 75
+delete done, 65
+delete start, 66
+compact block done, 75
+optimize start, 76
+delete done, 66
+delete start, 67
+compact segment done, 76
+compact block done, 76
+optimize start, 77
+delete done, 67
+delete start, 68
+compact segment done, 77
+compact block done, 77
+optimize start, 78
+compact segment done, 78
+delete done, 68
+delete start, 69
+compact block done, 78
+optimize start, 79
+compact segment done, 79
+compact block done, 79
+optimize start, 80
+delete done, 69
+delete start, 70
+compact segment done, 80
+compact block done, 80
+optimize start, 81
+delete done, 70
+delete start, 71
+compact segment done, 81
+compact block done, 81
+optimize start, 82
+compact segment done, 82
+delete done, 71
+delete start, 72
+compact block done, 82
+optimize start, 83
+compact segment done, 83
+compact block done, 83
+optimize start, 84
+delete done, 72
+delete start, 73
+compact segment done, 84
+compact block done, 84
+optimize start, 85
+delete done, 73
+delete start, 74
+compact segment done, 85
+compact block done, 85
+optimize start, 86
+compact segment done, 86
+delete done, 74
+delete start, 75
+compact block done, 86
+optimize start, 87
+delete done, 75
+delete start, 76
+compact segment done, 87
+compact block done, 87
+optimize start, 88
+compact segment done, 88
+delete done, 76
+delete start, 77
+compact block done, 88
+optimize start, 89
+compact segment done, 89
+compact block done, 89
+optimize start, 90
+compact segment done, 90
+delete done, 77
+delete start, 78
+compact block done, 90
+optimize start, 91
+compact segment done, 91
+delete done, 78
+delete start, 79
+compact block done, 91
+optimize start, 92
+compact segment done, 92
+compact block done, 92
+optimize start, 93
+delete done, 79
+delete start, 80
+compact segment done, 93
+compact block done, 93
+optimize start, 94
+compact segment done, 94
+delete done, 80
+delete start, 81
+compact block done, 94
+optimize start, 95
+compact segment done, 95
+delete done, 81
+delete start, 82
+compact block done, 95
+optimize start, 96
+compact segment done, 96
+compact block done, 96
+optimize start, 97
+delete done, 82
+delete start, 83
+compact segment done, 97
+compact block done, 97
+optimize start, 98
+delete done, 83
+delete start, 84
+compact segment done, 98
+compact block done, 98
+optimize start, 99
+delete done, 84
+delete start, 85
+compact segment done, 99
+compact block done, 99
+optimize start, 100
+compact segment done, 100
+delete done, 85
+delete start, 86
+delete done, 86
+delete start, 87
+compact block done, 100
+optimize start, 101
+compact segment done, 101
+compact block done, 101
+optimize start, 102
+delete done, 87
+delete start, 88
+compact segment done, 102
+compact block done, 102
+optimize start, 103
+compact segment done, 103
+delete done, 88
+delete start, 89
+compact block done, 103
+optimize start, 104
+compact segment done, 104
+delete done, 89
+delete start, 90
+compact block done, 104
+optimize start, 105
+compact segment done, 105
+delete done, 90
+delete start, 91
+compact block done, 105
+optimize start, 106
+compact segment done, 106
+compact block done, 106
+optimize start, 107
+delete done, 91
+delete start, 92
+compact segment done, 107
+compact block done, 107
+optimize start, 108
+delete done, 92
+delete start, 93
+compact segment done, 108
+compact block done, 108
+optimize start, 109
+compact segment done, 109
+delete done, 93
+delete start, 94
+compact block done, 109
+optimize start, 110
+delete done, 94
+delete start, 95
+compact segment done, 110
+compact block done, 110
+optimize start, 111
+compact segment done, 111
+delete done, 95
+delete start, 96
+compact block done, 111
+optimize start, 112
+compact segment done, 112
+delete done, 96
+delete start, 97
+compact block done, 112
+optimize start, 113
+compact segment done, 113
+delete done, 97
+delete start, 98
+compact block done, 113
+optimize start, 114
+compact segment done, 114
+compact block done, 114
+optimize start, 115
+delete done, 98
+delete start, 99
+compact segment done, 115
+compact block done, 115
+optimize start, 116
+compact segment done, 116
+delete done, 99
+delete start, 100
+compact block done, 116
+optimize start, 117
+compact segment done, 117
+compact block done, 117
+optimize start, 118
+compact segment done, 118
+compact block done, 118
+optimize start, 119
+compact segment done, 119
+delete done, 100
+delete start, 101
+compact block done, 119
+optimize start, 120
+compact segment done, 120
+compact block done, 120
+optimize start, 121
+delete done, 101
+delete start, 102
+compact segment done, 121
+compact block done, 121
+optimize start, 122
+delete done, 102
+delete start, 103
+compact segment done, 122
+compact block done, 122
+optimize start, 123
+compact segment done, 123
+delete done, 103
+delete start, 104
+compact block done, 123
+optimize start, 124
+compact segment done, 124
+compact block done, 124
+optimize start, 125
+delete done, 104
+delete start, 105
+compact segment done, 125
+delete done, 105
+delete start, 106
+compact block done, 125
+optimize start, 126
+delete done, 106
+delete start, 107
+compact segment done, 126
+compact block done, 126
+optimize start, 127
+compact segment done, 127
+compact block done, 127
+optimize start, 128
+delete done, 107
+delete start, 108
+compact segment done, 128
+delete done, 108
+delete start, 109
+compact block done, 128
+optimize start, 129
+compact segment done, 129
+compact block done, 129
+optimize start, 130
+delete done, 109
+delete start, 110
+delete done, 110
+delete start, 111
+compact segment done, 130
+compact block done, 130
+optimize start, 131
+compact segment done, 131
+delete done, 111
+delete start, 112
+compact block done, 131
+optimize start, 132
+compact segment done, 132
+delete done, 112
+delete start, 113
+compact block done, 132
+optimize start, 133
+compact segment done, 133
+delete done, 113
+delete start, 114
+compact block done, 133
+optimize start, 134
+compact segment done, 134
+compact block done, 134
+optimize start, 135
+delete done, 114
+delete start, 115
+compact segment done, 135
+compact block done, 135
+optimize start, 136
+delete done, 115
+delete start, 116
+compact segment done, 136
+compact block done, 136
+optimize start, 137
+compact segment done, 137
+delete done, 116
+delete start, 117
+compact block done, 137
+optimize start, 138
+compact segment done, 138
+delete done, 117
+delete start, 118
+compact block done, 138
+optimize start, 139
+compact segment done, 139
+compact block done, 139
+optimize start, 140
+delete done, 118
+delete start, 119
+compact segment done, 140
+compact block done, 140
+optimize start, 141
+delete done, 119
+delete start, 120
+compact segment done, 141
+compact block done, 141
+optimize start, 142
+delete done, 120
+delete start, 121
+compact segment done, 142
+compact block done, 142
+optimize start, 143
+compact segment done, 143
+delete done, 121
+delete start, 122
+compact block done, 143
+optimize start, 144
+compact segment done, 144
+compact block done, 144
+optimize start, 145
+delete done, 122
+delete start, 123
+compact segment done, 145
+compact block done, 145
+optimize start, 146
+compact segment done, 146
+delete done, 123
+delete start, 124
+compact block done, 146
+optimize start, 147
+compact segment done, 147
+compact block done, 147
+optimize start, 148
+compact segment done, 148
+compact block done, 148
+optimize start, 149
+delete done, 124
+delete start, 125
+compact segment done, 149
+compact block done, 149
+optimize start, 150
+delete done, 125
+delete start, 126
+compact segment done, 150
+delete done, 126
+delete start, 127
+compact block done, 150
+optimize start, 151
+compact segment done, 151
+compact block done, 151
+optimize start, 152
+compact segment done, 152
+delete done, 127
+delete start, 128
+compact block done, 152
+optimize start, 153
+compact segment done, 153
+delete done, 128
+delete start, 129
+compact block done, 153
+optimize start, 154
+compact segment done, 154
+delete done, 129
+delete start, 130
+compact block done, 154
+optimize start, 155
+compact segment done, 155
+compact block done, 155
+optimize start, 156
+delete done, 130
+delete start, 131
+compact segment done, 156
+compact block done, 156
+optimize start, 157
+delete done, 131
+delete start, 132
+compact segment done, 157
+compact block done, 157
+optimize start, 158
+compact segment done, 158
+delete done, 132
+delete start, 133
+compact block done, 158
+optimize start, 159
+compact segment done, 159
+compact block done, 159
+optimize start, 160
+compact segment done, 160
+delete done, 133
+delete start, 134
+compact block done, 160
+optimize start, 161
+compact segment done, 161
+delete done, 134
+delete start, 135
+compact block done, 161
+optimize start, 162
+compact segment done, 162
+compact block done, 162
+optimize start, 163
+delete done, 135
+delete start, 136
+compact segment done, 163
+compact block done, 163
+optimize start, 164
+compact segment done, 164
+compact block done, 164
+optimize start, 165
+delete done, 136
+delete start, 137
+compact segment done, 165
+delete done, 137
+delete start, 138
+compact block done, 165
+optimize start, 166
+compact segment done, 166
+compact block done, 166
+optimize start, 167
+delete done, 138
+delete start, 139
+compact segment done, 167
+compact block done, 167
+optimize start, 168
+compact segment done, 168
+delete done, 139
+delete start, 140
+compact block done, 168
+optimize start, 169
+compact segment done, 169
+compact block done, 169
+optimize start, 170
+compact segment done, 170
+delete done, 140
+delete start, 141
+compact block done, 170
+optimize start, 171
+compact segment done, 171
+delete done, 141
+delete start, 142
+compact block done, 171
+optimize start, 172
+compact segment done, 172
+compact block done, 172
+optimize start, 173
+compact segment done, 173
+delete done, 142
+delete start, 143
+compact block done, 173
+optimize start, 174
+compact segment done, 174
+delete done, 143
+delete start, 144
+compact block done, 174
+optimize start, 175
+compact segment done, 175
+delete done, 144
+delete start, 145
+compact block done, 175
+optimize start, 176
+delete done, 145
+delete start, 146
+compact segment done, 176
+compact block done, 176
+optimize start, 177
+compact segment done, 177
+delete done, 146
+delete start, 147
+compact block done, 177
+optimize start, 178
+compact segment done, 178
+compact block done, 178
+optimize start, 179
+compact segment done, 179
+compact block done, 179
+optimize start, 180
+delete done, 147
+delete start, 148
+compact segment done, 180
+compact block done, 180
+optimize start, 181
+compact segment done, 181
+delete done, 148
+delete start, 149
+compact block done, 181
+optimize start, 182
+compact segment done, 182
+compact block done, 182
+optimize start, 183
+delete done, 149
+delete start, 150
+compact segment done, 183
+compact block done, 183
+optimize start, 184
+compact segment done, 184
+compact block done, 184
+optimize start, 185
+delete done, 150
+delete start, 151
+compact segment done, 185
+compact block done, 185
+optimize start, 186
+compact segment done, 186
+compact block done, 186
+optimize start, 187
+delete done, 151
+delete start, 152
+compact segment done, 187
+compact block done, 187
+optimize start, 188
+delete done, 152
+delete start, 153
+compact segment done, 188
+compact block done, 188
+optimize start, 189
+compact segment done, 189
+delete done, 153
+delete start, 154
+compact block done, 189
+optimize start, 190
+compact segment done, 190
+delete done, 154
+delete start, 155
+compact block done, 190
+optimize start, 191
+compact segment done, 191
+delete done, 155
+delete start, 156
+compact block done, 191
+optimize start, 192
+compact segment done, 192
+compact block done, 192
+optimize start, 193
+delete done, 156
+delete start, 157
+compact segment done, 193
+compact block done, 193
+optimize start, 194
+delete done, 157
+delete start, 158
+compact segment done, 194
+compact block done, 194
+optimize start, 195
+compact segment done, 195
+delete done, 158
+delete start, 159
+compact block done, 195
+optimize start, 196
+compact segment done, 196
+compact block done, 196
+optimize start, 197
+delete done, 159
+delete start, 160
+compact segment done, 197
+compact block done, 197
+optimize start, 198
+compact segment done, 198
+delete done, 160
+delete start, 161
+compact block done, 198
+optimize start, 199
+compact segment done, 199
+compact block done, 199
+optimize start, 200
+delete done, 161
+delete start, 162
+compact segment done, 200
+delete done, 162
+delete start, 163
+compact block done, 200
+optimize start, 201
+compact segment done, 201
+delete done, 163
+delete start, 164
+compact block done, 201
+optimize start, 202
+compact segment done, 202
+delete done, 164
+delete start, 165
+compact block done, 202
+optimize start, 203
+compact segment done, 203
+compact block done, 203
+optimize start, 204
+delete done, 165
+delete start, 166
+compact segment done, 204
+compact block done, 204
+optimize start, 205
+delete done, 166
+delete start, 167
+compact segment done, 205
+compact block done, 205
+optimize start, 206
+delete done, 167
+delete start, 168
+compact segment done, 206
+compact block done, 206
+optimize start, 207
+compact segment done, 207
+delete done, 168
+delete start, 169
+compact block done, 207
+optimize start, 208
+compact segment done, 208
+delete done, 169
+delete start, 170
+compact block done, 208
+optimize start, 209
+compact segment done, 209
+compact block done, 209
+optimize start, 210
+delete done, 170
+delete start, 171
+compact segment done, 210
+compact block done, 210
+optimize start, 211
+delete done, 171
+delete start, 172
+compact segment done, 211
+compact block done, 211
+optimize start, 212
+compact segment done, 212
+delete done, 172
+delete start, 173
+compact block done, 212
+optimize start, 213
+compact segment done, 213
+compact block done, 213
+optimize start, 214
+delete done, 173
+delete start, 174
+compact segment done, 214
+compact block done, 214
+optimize start, 215
+compact segment done, 215
+delete done, 174
+delete start, 175
+compact block done, 215
+optimize start, 216
+compact segment done, 216
+delete done, 175
+delete start, 176
+compact block done, 216
+optimize start, 217
+compact segment done, 217
+compact block done, 217
+optimize start, 218
+compact segment done, 218
+delete done, 176
+delete start, 177
+compact block done, 218
+optimize start, 219
+compact segment done, 219
+compact block done, 219
+optimize start, 220
+delete done, 177
+delete start, 178
+compact segment done, 220
+compact block done, 220
+optimize start, 221
+compact segment done, 221
+delete done, 178
+delete start, 179
+compact block done, 221
+optimize start, 222
+compact segment done, 222
+compact block done, 222
+optimize start, 223
+delete done, 179
+delete start, 180
+compact segment done, 223
+compact block done, 223
+optimize start, 224
+compact segment done, 224
+delete done, 180
+delete start, 181
+compact block done, 224
+optimize start, 225
+compact segment done, 225
+delete done, 181
+delete start, 182
+compact block done, 225
+optimize start, 226
+compact segment done, 226
+compact block done, 226
+optimize start, 227
+delete done, 182
+delete start, 183
+compact segment done, 227
+compact block done, 227
+optimize start, 228
+compact segment done, 228
+delete done, 183
+delete start, 184
+compact block done, 228
+optimize start, 229
+compact segment done, 229
+compact block done, 229
+optimize start, 230
+delete done, 184
+delete start, 185
+compact segment done, 230
+compact block done, 230
+optimize start, 231
+delete done, 185
+delete start, 186
+compact segment done, 231
+compact block done, 231
+optimize start, 232
+compact segment done, 232
+delete done, 186
+delete start, 187
+compact block done, 232
+optimize start, 233
+compact segment done, 233
+delete done, 187
+delete start, 188
+compact block done, 233
+optimize start, 234
+compact segment done, 234
+compact block done, 234
+optimize start, 235
+delete done, 188
+delete start, 189
+compact segment done, 235
+compact block done, 235
+optimize start, 236
+delete done, 189
+delete start, 190
+compact segment done, 236
+delete done, 190
+delete start, 191
+compact block done, 236
+optimize start, 237
+compact segment done, 237
+compact block done, 237
+optimize start, 238
+delete done, 191
+delete start, 192
+compact segment done, 238
+compact block done, 238
+optimize start, 239
+delete done, 192
+delete start, 193
+compact segment done, 239
+compact block done, 239
+optimize start, 240
+compact segment done, 240
+delete done, 193
+delete start, 194
+compact block done, 240
+optimize start, 241
+compact segment done, 241
+compact block done, 241
+optimize start, 242
+delete done, 194
+delete start, 195
+compact segment done, 242
+delete done, 195
+delete start, 196
+compact block done, 242
+optimize start, 243
+compact segment done, 243
+compact block done, 243
+optimize start, 244
+delete done, 196
+delete start, 197
+compact segment done, 244
+compact block done, 244
+optimize start, 245
+compact segment done, 245
+delete done, 197
+delete start, 198
+compact block done, 245
+optimize start, 246
+compact segment done, 246
+compact block done, 246
+optimize start, 247
+compact segment done, 247
+delete done, 198
+delete start, 199
+compact block done, 247
+optimize start, 248
+compact segment done, 248
+compact block done, 248
+optimize start, 249
+delete done, 199
+delete start, 200
+compact segment done, 249
+compact block done, 249
+optimize start, 250
+compact segment done, 250
+delete done, 200
+delete start, 201
+delete done, 201
+delete start, 202
+compact block done, 250
+optimize start, 251
+compact segment done, 251
+compact block done, 251
+optimize start, 252
+delete done, 202
+delete start, 203
+compact segment done, 252
+compact block done, 252
+optimize start, 253
+delete done, 203
+delete start, 204
+compact segment done, 253
+compact block done, 253
+optimize start, 254
+delete done, 204
+delete start, 205
+compact segment done, 254
+compact block done, 254
+optimize start, 255
+compact segment done, 255
+delete done, 205
+delete start, 206
+compact block done, 255
+optimize start, 256
+compact segment done, 256
+delete done, 206
+delete start, 207
+compact block done, 256
+optimize start, 257
+compact segment done, 257
+compact block done, 257
+optimize start, 258
+delete done, 207
+delete start, 208
+compact segment done, 258
+compact block done, 258
+optimize start, 259
+compact segment done, 259
+delete done, 208
+delete start, 209
+compact block done, 259
+optimize start, 260
+compact segment done, 260
+delete done, 209
+delete start, 210
+compact block done, 260
+optimize start, 261
+compact segment done, 261
+compact block done, 261
+optimize start, 262
+delete done, 210
+delete start, 211
+compact segment done, 262
+compact block done, 262
+optimize start, 263
+delete done, 211
+delete start, 212
+compact segment done, 263
+compact block done, 263
+optimize start, 264
+compact segment done, 264
+delete done, 212
+delete start, 213
+compact block done, 264
+optimize start, 265
+compact segment done, 265
+compact block done, 265
+optimize start, 266
+delete done, 213
+delete start, 214
+compact segment done, 266
+compact block done, 266
+optimize start, 267
+delete done, 214
+delete start, 215
+compact segment done, 267
+compact block done, 267
+optimize start, 268
+compact segment done, 268
+delete done, 215
+delete start, 216
+compact block done, 268
+optimize start, 269
+compact segment done, 269
+compact block done, 269
+optimize start, 270
+delete done, 216
+delete start, 217
+compact segment done, 270
+compact block done, 270
+optimize start, 271
+delete done, 217
+delete start, 218
+compact segment done, 271
+compact block done, 271
+optimize start, 272
+delete done, 218
+delete start, 219
+compact segment done, 272
+compact block done, 272
+optimize start, 273
+compact segment done, 273
+compact block done, 273
+optimize start, 274
+delete done, 219
+delete start, 220
+compact segment done, 274
+compact block done, 274
+optimize start, 275
+delete done, 220
+delete start, 221
+compact segment done, 275
+delete done, 221
+delete start, 222
+compact block done, 275
+optimize start, 276
+compact segment done, 276
+delete done, 222
+delete start, 223
+compact block done, 276
+optimize start, 277
+compact segment done, 277
+delete done, 223
+delete start, 224
+compact block done, 277
+optimize start, 278
+compact segment done, 278
+delete done, 224
+delete start, 225
+compact block done, 278
+optimize start, 279
+compact segment done, 279
+compact block done, 279
+optimize start, 280
+delete done, 225
+delete start, 226
+compact segment done, 280
+compact block done, 280
+optimize start, 281
+delete done, 226
+delete start, 227
+compact segment done, 281
+compact block done, 281
+optimize start, 282
+delete done, 227
+delete start, 228
+compact segment done, 282
+compact block done, 282
+optimize start, 283
+compact segment done, 283
+delete done, 228
+delete start, 229
+compact block done, 283
+optimize start, 284
+compact segment done, 284
+compact block done, 284
+optimize start, 285
+delete done, 229
+delete start, 230
+compact segment done, 285
+compact block done, 285
+optimize start, 286
+delete done, 230
+delete start, 231
+compact segment done, 286
+compact block done, 286
+optimize start, 287
+compact segment done, 287
+delete done, 231
+delete start, 232
+compact block done, 287
+optimize start, 288
+compact segment done, 288
+delete done, 232
+delete start, 233
+compact block done, 288
+optimize start, 289
+delete done, 233
+delete start, 234
+compact segment done, 289
+compact block done, 289
+optimize start, 290
+compact segment done, 290
+delete done, 234
+delete start, 235
+compact block done, 290
+optimize start, 291
+compact segment done, 291
+compact block done, 291
+optimize start, 292
+delete done, 235
+delete start, 236
+compact segment done, 292
+compact block done, 292
+optimize start, 293
+compact segment done, 293
+compact block done, 293
+optimize start, 294
+delete done, 236
+delete start, 237
+compact segment done, 294
+compact block done, 294
+optimize start, 295
+compact segment done, 295
+delete done, 237
+delete start, 238
+compact block done, 295
+optimize start, 296
+compact segment done, 296
+delete done, 238
+delete start, 239
+compact block done, 296
+optimize start, 297
+compact segment done, 297
+compact block done, 297
+optimize start, 298
+delete done, 239
+delete start, 240
+compact segment done, 298
+compact block done, 298
+optimize start, 299
+delete done, 240
+delete start, 241
+compact segment done, 299
+compact block done, 299
+delete done, 241
+delete start, 242
+delete done, 242
+delete start, 243
+delete done, 243
+delete start, 244
+delete done, 244
+delete start, 245
+delete done, 245
+delete start, 246
+delete done, 246
+delete start, 247
+delete done, 247
+delete start, 248
+delete done, 248
+delete start, 249
+delete done, 249
+delete start, 250
+delete done, 250
+delete start, 251
+delete done, 251
+delete start, 252
+delete done, 252
+delete start, 253
+delete done, 253
+delete start, 254
+delete done, 254
+delete start, 255
+delete done, 255
+delete start, 256
+delete done, 256
+delete start, 257
+delete done, 257
+delete start, 258
+delete done, 258
+delete start, 259
+delete done, 259
+delete start, 260
+delete done, 260
+delete start, 261
+delete done, 261
+delete start, 262
+delete done, 262
+delete start, 263
+delete done, 263
+delete start, 264
+delete done, 264
+delete start, 265
+delete done, 265
+delete start, 266
+delete done, 266
+delete start, 267
+delete done, 267
+delete start, 268
+delete done, 268
+delete start, 269
+delete done, 269
+delete start, 270
+delete done, 270
+delete start, 271
+delete done, 271
+delete start, 272
+delete done, 272
+delete start, 273
+delete done, 273
+delete start, 274
+delete done, 274
+delete start, 275
+delete done, 275
+delete start, 276
+delete done, 276
+delete start, 277
+delete done, 277
+delete start, 278
+delete done, 278
+delete start, 279
+delete done, 279
+delete start, 280
+delete done, 280
+delete start, 281
+delete done, 281
+delete start, 282
+delete done, 282
+delete start, 283
+delete done, 283
+delete start, 284
+delete done, 284
+delete start, 285
+delete done, 285
+delete start, 286
+delete done, 286
+delete start, 287
+delete done, 287
+delete start, 288
+delete done, 288
+delete start, 289
+delete done, 289
+delete start, 290
+delete done, 290
+delete start, 291
+delete done, 291
+delete start, 292
+delete done, 292
+delete start, 293
+delete done, 293
+delete start, 294
+delete done, 294
+delete start, 295
+delete done, 295
+delete start, 296
+delete done, 296
+delete start, 297
+delete done, 297
+delete start, 298
+delete done, 298
+delete start, 299
+delete done, 299
+delete start, 300
+delete done, 300
+delete start, 301
+delete done, 301
+delete start, 302
+delete done, 302
+delete start, 303
+delete done, 303
+delete start, 304
+delete done, 304
+delete start, 305
+delete done, 305
+delete start, 306
+delete done, 306
+delete start, 307
+delete done, 307
+delete start, 308
+delete done, 308
+delete start, 309
+delete done, 309
+delete start, 310
+delete done, 310
+delete start, 311
+delete done, 311
+delete start, 312
+delete done, 312
+delete start, 313
+delete done, 313
+delete start, 314
+delete done, 314
+delete start, 315
+delete done, 315
+delete start, 316
+delete done, 316
+delete start, 317
+delete done, 317
+delete start, 318
+delete done, 318
+delete start, 319
+delete done, 319
+delete start, 320
+delete done, 320
+delete start, 321
+delete done, 321
+delete start, 322
+delete done, 322
+delete start, 323
+delete done, 323
+delete start, 324
+delete done, 324
+delete start, 325
+delete done, 325
+delete start, 326
+delete done, 326
+delete start, 327
+delete done, 327
+delete start, 328
+delete done, 328
+delete start, 329
+delete done, 329
+delete start, 330
+delete done, 330
+delete start, 331
+delete done, 331
+delete start, 332
+delete done, 332
+delete start, 333
+delete done, 333
+delete start, 334
+delete done, 334
+delete start, 335
+delete done, 335
+delete start, 336
+delete done, 336
+delete start, 337
+delete done, 337
+delete start, 338
+delete done, 338
+delete start, 339
+delete done, 339
+delete start, 340
+delete done, 340
+delete start, 341
+delete done, 341
+delete start, 342
+delete done, 342
+delete start, 343
+delete done, 343
+delete start, 344
+delete done, 344
+delete start, 345
+delete done, 345
+delete start, 346
+delete done, 346
+delete start, 347
+delete done, 347
+delete start, 348
+delete done, 348
+delete start, 349
+delete done, 349
+delete start, 350
+delete done, 350
+delete start, 351
+delete done, 351
+delete start, 352
+delete done, 352
+delete start, 353
+delete done, 353
+delete start, 354
+delete done, 354
+delete start, 355
+delete done, 355
+delete start, 356
+delete done, 356
+delete start, 357
+delete done, 357
+delete start, 358
+delete done, 358
+delete start, 359
+delete done, 359
+delete start, 360
+delete done, 360
+delete start, 361
+delete done, 361
+delete start, 362
+delete done, 362
+delete start, 363
+delete done, 363
+delete start, 364
+delete done, 364
+delete start, 365
+delete done, 365
+delete start, 366
+delete done, 366
+delete start, 367
+delete done, 367
+delete start, 368
+delete done, 368
+delete start, 369
+delete done, 369
+delete start, 370
+delete done, 370
+delete start, 371
+delete done, 371
+delete start, 372
+delete done, 372
+delete start, 373
+delete done, 373
+delete start, 374
+delete done, 374
+delete start, 375
+delete done, 375
+delete start, 376
+delete done, 376
+delete start, 377
+delete done, 377
+delete start, 378
+delete done, 378
+delete start, 379
+delete done, 379
+delete start, 380
+delete done, 380
+delete start, 381
+delete done, 381
+delete start, 382
+delete done, 382
+delete start, 383
+delete done, 383
+delete start, 384
+delete done, 384
+delete start, 385
+delete done, 385
+delete start, 386
+delete done, 386
+delete start, 387
+delete done, 387
+delete start, 388
+delete done, 388
+delete start, 389
+delete done, 389
+delete start, 390
+delete done, 390
+delete start, 391
+delete done, 391
+delete start, 392
+delete done, 392
+delete start, 393
+delete done, 393
+delete start, 394
+delete done, 394
+delete start, 395
+delete done, 395
+delete start, 396
+delete done, 396
+delete start, 397
+delete done, 397
+delete start, 398
+delete done, 398
+delete start, 399
+delete done, 399
+delete start, 400
+delete done, 400
+delete start, 401
+delete done, 401
+delete start, 402
+delete done, 402
+delete start, 403
+delete done, 403
+delete start, 404
+delete done, 404
+delete start, 405
+delete done, 405
+delete start, 406
+delete done, 406
+delete start, 407
+delete done, 407
+delete start, 408
+delete done, 408
+delete start, 409
+delete done, 409
+delete start, 410
+delete done, 410
+delete start, 411
+delete done, 411
+delete start, 412
+delete done, 412
+delete start, 413
+delete done, 413
+delete start, 414
+delete done, 414
+delete start, 415
+delete done, 415
+delete start, 416
+delete done, 416
+delete start, 417
+delete done, 417
+delete start, 418
+delete done, 418
+delete start, 419
+delete done, 419
+delete start, 420
+delete done, 420
+delete start, 421
+delete done, 421
+delete start, 422
+delete done, 422
+delete start, 423
+delete done, 423
+delete start, 424
+delete done, 424
+delete start, 425
+delete done, 425
+delete start, 426
+delete done, 426
+delete start, 427
+delete done, 427
+delete start, 428
+delete done, 428
+delete start, 429
+delete done, 429
+delete start, 430
+delete done, 430
+delete start, 431
+delete done, 431
+delete start, 432
+delete done, 432
+delete start, 433
+delete done, 433
+delete start, 434
+delete done, 434
+delete start, 435
+delete done, 435
+delete start, 436
+delete done, 436
+delete start, 437
+delete done, 437
+delete start, 438
+delete done, 438
+delete start, 439
+delete done, 439
+delete start, 440
+delete done, 440
+delete start, 441
+delete done, 441
+delete start, 442
+delete done, 442
+delete start, 443
+delete done, 443
+delete start, 444
+delete done, 444
+delete start, 445
+delete done, 445
+delete start, 446
+delete done, 446
+delete start, 447
+delete done, 447
+delete start, 448
+delete done, 448
+delete start, 449
+delete done, 449
+delete start, 450
+delete done, 450
+delete start, 451
+delete done, 451
+delete start, 452
+delete done, 452
+delete start, 453
+delete done, 453
+delete start, 454
+delete done, 454
+delete start, 455
+delete done, 455
+delete start, 456
+delete done, 456
+delete start, 457
+delete done, 457
+delete start, 458
+delete done, 458
+delete start, 459
+delete done, 459
+delete start, 460
+delete done, 460
+delete start, 461
+delete done, 461
+delete start, 462
+delete done, 462
+delete start, 463
+delete done, 463
+delete start, 464
+delete done, 464
+delete start, 465
+delete done, 465
+delete start, 466
+delete done, 466
+delete start, 467
+delete done, 467
+delete start, 468
+delete done, 468
+delete start, 469
+delete done, 469
+delete start, 470
+delete done, 470
+delete start, 471
+delete done, 471
+delete start, 472
+delete done, 472
+delete start, 473
+delete done, 473
+delete start, 474
+delete done, 474
+delete start, 475
+delete done, 475
+delete start, 476
+delete done, 476
+delete start, 477
+delete done, 477
+delete start, 478
+delete done, 478
+delete start, 479
+delete done, 479
+delete start, 480
+delete done, 480
+delete start, 481
+delete done, 481
+delete start, 482
+delete done, 482
+delete start, 483
+delete done, 483
+delete start, 484
+delete done, 484
+delete start, 485
+delete done, 485
+delete start, 486
+delete done, 486
+delete start, 487
+delete done, 487
+delete start, 488
+delete done, 488
+delete start, 489
+delete done, 489
+delete start, 490
+delete done, 490
+delete start, 491
+delete done, 491
+delete start, 492
+delete done, 492
+delete start, 493
+delete done, 493
+delete start, 494
+delete done, 494
+delete start, 495
+delete done, 495
+delete start, 496
+delete done, 496
+delete start, 497
+delete done, 497
+delete start, 498
+delete done, 498
+delete start, 499
+delete done, 499
+delete start, 500
+delete done, 500
+delete start, 501
+delete done, 501
+delete start, 502
+delete done, 502
+delete start, 503
+delete done, 503
+delete start, 504
+delete done, 504
+delete start, 505
+delete done, 505
+delete start, 506
+delete done, 506
+delete start, 507
+delete done, 507
+delete start, 508
+delete done, 508
+delete start, 509
+delete done, 509
+delete start, 510
+delete done, 510
+delete start, 511
+delete done, 511
+delete start, 512
+delete done, 512
+delete start, 513
+delete done, 513
+delete start, 514
+delete done, 514
+delete start, 515
+delete done, 515
+delete start, 516
+delete done, 516
+delete start, 517
+delete done, 517
+delete start, 518
+delete done, 518
+delete start, 519
+delete done, 519
+delete start, 520
+delete done, 520
+delete start, 521
+delete done, 521
+delete start, 522
+delete done, 522
+delete start, 523
+delete done, 523
+delete start, 524
+delete done, 524
+delete start, 525
+delete done, 525
+delete start, 526
+delete done, 526
+delete start, 527
+delete done, 527
+delete start, 528
+delete done, 528
+delete start, 529
+delete done, 529
+delete start, 530
+delete done, 530
+delete start, 531
+delete done, 531
+delete start, 532
+delete done, 532
+delete start, 533
+delete done, 533
+delete start, 534
+delete done, 534
+delete start, 535
+delete done, 535
+delete start, 536
+delete done, 536
+delete start, 537
+delete done, 537
+delete start, 538
+delete done, 538
+delete start, 539
+delete done, 539
+delete start, 540
+delete done, 540
+delete start, 541
+delete done, 541
+delete start, 542
+delete done, 542
+delete start, 543
+delete done, 543
+delete start, 544
+delete done, 544
+delete start, 545
+delete done, 545
+delete start, 546
+delete done, 546
+delete start, 547
+delete done, 547
+delete start, 548
+delete done, 548
+delete start, 549
+delete done, 549
+delete start, 550
+delete done, 550
+delete start, 551
+delete done, 551
+delete start, 552
+delete done, 552
+delete start, 553
+delete done, 553
+delete start, 554
+delete done, 554
+delete start, 555
+delete done, 555
+delete start, 556
+delete done, 556
+delete start, 557
+delete done, 557
+delete start, 558
+delete done, 558
+delete start, 559
+delete done, 559
+delete start, 560
+delete done, 560
+delete start, 561
+delete done, 561
+delete start, 562
+delete done, 562
+delete start, 563
+delete done, 563
+delete start, 564
+delete done, 564
+delete start, 565
+delete done, 565
+delete start, 566
+delete done, 566
+delete start, 567
+delete done, 567
+delete start, 568
+delete done, 568
+delete start, 569
+delete done, 569
+delete start, 570
+delete done, 570
+delete start, 571
+delete done, 571
+delete start, 572
+delete done, 572
+delete start, 573
+delete done, 573
+delete start, 574
+delete done, 574
+delete start, 575
+delete done, 575
+delete start, 576
+delete done, 576
+delete start, 577
+delete done, 577
+delete start, 578
+delete done, 578
+delete start, 579
+delete done, 579
+delete start, 580
+delete done, 580
+delete start, 581
+delete done, 581
+delete start, 582
+delete done, 582
+delete start, 583
+delete done, 583
+delete start, 584
+delete done, 584
+delete start, 585
+delete done, 585
+delete start, 586
+delete done, 586
+delete start, 587
+delete done, 587
+delete start, 588
+delete done, 588
+delete start, 589
+delete done, 589
+delete start, 590
+delete done, 590
+delete start, 591
+delete done, 591
+delete start, 592
+delete done, 592
+delete start, 593
+delete done, 593
+delete start, 594
+delete done, 594
+delete start, 595
+delete done, 595
+delete start, 596
+delete done, 596
+delete start, 597
+delete done, 597
+delete start, 598
+delete done, 598
+delete start, 599
+delete done, 599
+delete start, 600
+delete done, 600
+delete start, 601
+delete done, 601
+delete start, 602
+delete done, 602
+delete start, 603
+delete done, 603
+delete start, 604
+delete done, 604
+delete start, 605
+delete done, 605
+delete start, 606
+delete done, 606
+delete start, 607
+delete done, 607
+delete start, 608
+delete done, 608
+delete start, 609
+delete done, 609
+delete start, 610
+delete done, 610
+delete start, 611
+delete done, 611
+delete start, 612
+delete done, 612
+delete start, 613
+delete done, 613
+delete start, 614
+delete done, 614
+delete start, 615
+delete done, 615
+delete start, 616
+delete done, 616
+delete start, 617
+delete done, 617
+delete start, 618
+delete done, 618
+delete start, 619
+delete done, 619
+delete start, 620
+delete done, 620
+delete start, 621
+delete done, 621
+delete start, 622
+delete done, 622
+delete start, 623
+delete done, 623
+delete start, 624
+delete done, 624
+delete start, 625
+delete done, 625
+delete start, 626
+delete done, 626
+delete start, 627
+delete done, 627
+delete start, 628
+delete done, 628
+delete start, 629
+delete done, 629
+delete start, 630
+delete done, 630
+delete start, 631
+delete done, 631
+delete start, 632
+delete done, 632
+delete start, 633
+delete done, 633
+delete start, 634
+delete done, 634
+delete start, 635
+delete done, 635
+delete start, 636
+delete done, 636
+delete start, 637
+delete done, 637
+delete start, 638
+delete done, 638
+delete start, 639
+delete done, 639
+delete start, 640
+delete done, 640
+delete start, 641
+delete done, 641
+delete start, 642
+delete done, 642
+delete start, 643
+delete done, 643
+delete start, 644
+delete done, 644
+delete start, 645
+delete done, 645
+delete start, 646
+delete done, 646
+delete start, 647
+delete done, 647
+delete start, 648
+delete done, 648
+delete start, 649
+delete done, 649
+delete start, 650
+delete done, 650
+delete start, 651
+delete done, 651
+delete start, 652
+delete done, 652
+delete start, 653
+delete done, 653
+delete start, 654
+delete done, 654
+delete start, 655
+delete done, 655
+delete start, 656
+delete done, 656
+delete start, 657
+delete done, 657
+delete start, 658
+delete done, 658
+delete start, 659
+delete done, 659
+delete start, 660
+delete done, 660
+delete start, 661
+delete done, 661
+delete start, 662
+delete done, 662
+delete start, 663
+delete done, 663
+delete start, 664
+delete done, 664
+delete start, 665
+delete done, 665
+delete start, 666
+delete done, 666
+delete start, 667
+delete done, 667
+delete start, 668
+delete done, 668
+delete start, 669
+delete done, 669
+delete start, 670
+delete done, 670
+delete start, 671
+delete done, 671
+delete start, 672
+delete done, 672
+delete start, 673
+delete done, 673
+delete start, 674
+delete done, 674
+delete start, 675
+delete done, 675
+delete start, 676
+delete done, 676
+delete start, 677
+delete done, 677
+delete start, 678
+delete done, 678
+delete start, 679
+delete done, 679
+delete start, 680
+delete done, 680
+delete start, 681
+delete done, 681
+delete start, 682
+delete done, 682
+delete start, 683
+delete done, 683
+delete start, 684
+delete done, 684
+delete start, 685
+delete done, 685
+delete start, 686
+delete done, 686
+delete start, 687
+delete done, 687
+delete start, 688
+delete done, 688
+delete start, 689
+delete done, 689
+delete start, 690
+delete done, 690
+delete start, 691
+delete done, 691
+delete start, 692
+delete done, 692
+delete start, 693
+delete done, 693
+delete start, 694
+delete done, 694
+delete start, 695
+delete done, 695
+delete start, 696
+delete done, 696
+delete start, 697
+delete done, 697
+delete start, 698
+delete done, 698
+delete start, 699
+delete done, 699
+delete start, 700
+delete done, 700
+delete start, 701
+delete done, 701
+delete start, 702
+delete done, 702
+delete start, 703
+delete done, 703
+delete start, 704
+delete done, 704
+delete start, 705
+delete done, 705
+delete start, 706
+delete done, 706
+delete start, 707
+delete done, 707
+delete start, 708
+delete done, 708
+delete start, 709
+delete done, 709
+delete start, 710
+delete done, 710
+delete start, 711
+delete done, 711
+delete start, 712
+delete done, 712
+delete start, 713
+delete done, 713
+delete start, 714
+delete done, 714
+delete start, 715
+delete done, 715
+delete start, 716
+delete done, 716
+delete start, 717
+delete done, 717
+delete start, 718
+delete done, 718
+delete start, 719
+delete done, 719
+delete start, 720
+delete done, 720
+delete start, 721
+delete done, 721
+delete start, 722
+delete done, 722
+delete start, 723
+delete done, 723
+delete start, 724
+delete done, 724
+delete start, 725
+delete done, 725
+delete start, 726
+delete done, 726
+delete start, 727
+delete done, 727
+delete start, 728
+delete done, 728
+delete start, 729
+delete done, 729
+delete start, 730
+delete done, 730
+delete start, 731
+delete done, 731
+delete start, 732
+delete done, 732
+delete start, 733
+delete done, 733
+delete start, 734
+delete done, 734
+delete start, 735
+delete done, 735
+delete start, 736
+delete done, 736
+delete start, 737
+delete done, 737
+delete start, 738
+delete done, 738
+delete start, 739
+delete done, 739
+delete start, 740
+delete done, 740
+delete start, 741
+delete done, 741
+delete start, 742
+delete done, 742
+delete start, 743
+delete done, 743
+delete start, 744
+delete done, 744
+delete start, 745
+delete done, 745
+delete start, 746
+delete done, 746
+delete start, 747
+delete done, 747
+delete start, 748
+delete done, 748
+delete start, 749
+delete done, 749
+delete start, 750
+delete done, 750
+delete start, 751
+delete done, 751
+delete start, 752
+delete done, 752
+delete start, 753
+delete done, 753
+delete start, 754
+delete done, 754
+delete start, 755
+delete done, 755
+delete start, 756
+delete done, 756
+delete start, 757
+delete done, 757
+delete start, 758
+delete done, 758
+delete start, 759
+delete done, 759
+delete start, 760
+delete done, 760
+delete start, 761
+delete done, 761
+delete start, 762
+delete done, 762
+delete start, 763
+delete done, 763
+delete start, 764
+delete done, 764
+delete start, 765
+delete done, 765
+delete start, 766
+delete done, 766
+delete start, 767
+delete done, 767
+delete start, 768
+delete done, 768
+delete start, 769
+delete done, 769
+delete start, 770
+delete done, 770
+delete start, 771
+delete done, 771
+delete start, 772
+delete done, 772
+delete start, 773
+delete done, 773
+delete start, 774
+delete done, 774
+delete start, 775
+delete done, 775
+delete start, 776
+delete done, 776
+delete start, 777
+delete done, 777
+delete start, 778
+delete done, 778
+delete start, 779
+delete done, 779
+delete start, 780
+delete done, 780
+delete start, 781
+delete done, 781
+delete start, 782
+delete done, 782
+delete start, 783
+delete done, 783
+delete start, 784
+delete done, 784
+delete start, 785
+delete done, 785
+delete start, 786
+delete done, 786
+delete start, 787
+delete done, 787
+delete start, 788
+delete done, 788
+delete start, 789
+delete done, 789
+delete start, 790
+delete done, 790
+delete start, 791
+delete done, 791
+delete start, 792
+delete done, 792
+delete start, 793
+delete done, 793
+delete start, 794
+delete done, 794
+delete start, 795
+delete done, 795
+delete start, 796
+delete done, 796
+delete start, 797
+delete done, 797
+delete start, 798
+delete done, 798
+delete start, 799
+delete done, 799
+delete start, 800
+delete done, 800
+delete start, 801
+delete done, 801
+delete start, 802
+delete done, 802
+delete start, 803
+delete done, 803
+delete start, 804
+delete done, 804
+delete start, 805
+delete done, 805
+delete start, 806
+delete done, 806
+delete start, 807
+delete done, 807
+delete start, 808
+delete done, 808
+delete start, 809
+delete done, 809
+delete start, 810
+delete done, 810
+delete start, 811
+delete done, 811
+delete start, 812
+delete done, 812
+delete start, 813
+delete done, 813
+delete start, 814
+delete done, 814
+delete start, 815
+delete done, 815
+delete start, 816
+delete done, 816
+delete start, 817
+delete done, 817
+delete start, 818
+delete done, 818
+delete start, 819
+delete done, 819
+delete start, 820
+delete done, 820
+delete start, 821
+delete done, 821
+delete start, 822
+delete done, 822
+delete start, 823
+delete done, 823
+delete start, 824
+delete done, 824
+delete start, 825
+delete done, 825
+delete start, 826
+delete done, 826
+delete start, 827
+delete done, 827
+delete start, 828
+delete done, 828
+delete start, 829
+delete done, 829
+delete start, 830
+delete done, 830
+delete start, 831
+delete done, 831
+delete start, 832
+delete done, 832
+delete start, 833
+delete done, 833
+delete start, 834
+delete done, 834
+delete start, 835
+delete done, 835
+delete start, 836
+delete done, 836
+delete start, 837
+delete done, 837
+delete start, 838
+delete done, 838
+delete start, 839
+delete done, 839
+delete start, 840
+delete done, 840
+delete start, 841
+delete done, 841
+delete start, 842
+delete done, 842
+delete start, 843
+delete done, 843
+delete start, 844
+delete done, 844
+delete start, 845
+delete done, 845
+delete start, 846
+delete done, 846
+delete start, 847
+delete done, 847
+delete start, 848
+delete done, 848
+delete start, 849
+delete done, 849
+delete start, 850
+delete done, 850
+delete start, 851
+delete done, 851
+delete start, 852
+delete done, 852
+delete start, 853
+delete done, 853
+delete start, 854
+delete done, 854
+delete start, 855
+delete done, 855
+delete start, 856
+delete done, 856
+delete start, 857
+delete done, 857
+delete start, 858
+delete done, 858
+delete start, 859
+delete done, 859
+delete start, 860
+delete done, 860
+delete start, 861
+delete done, 861
+delete start, 862
+delete done, 862
+delete start, 863
+delete done, 863
+delete start, 864
+delete done, 864
+delete start, 865
+delete done, 865
+delete start, 866
+delete done, 866
+delete start, 867
+delete done, 867
+delete start, 868
+delete done, 868
+delete start, 869
+delete done, 869
+delete start, 870
+delete done, 870
+delete start, 871
+delete done, 871
+delete start, 872
+delete done, 872
+delete start, 873
+delete done, 873
+delete start, 874
+delete done, 874
+delete start, 875
+delete done, 875
+delete start, 876
+delete done, 876
+delete start, 877
+delete done, 877
+delete start, 878
+delete done, 878
+delete start, 879
+delete done, 879
+delete start, 880
+delete done, 880
+delete start, 881
+delete done, 881
+delete start, 882
+delete done, 882
+delete start, 883
+delete done, 883
+delete start, 884
+delete done, 884
+delete start, 885
+delete done, 885
+delete start, 886
+delete done, 886
+delete start, 887
+delete done, 887
+delete start, 888
+delete done, 888
+delete start, 889
+delete done, 889
+delete start, 890
+delete done, 890
+delete start, 891
+delete done, 891
+delete start, 892
+delete done, 892
+delete start, 893
+delete done, 893
+delete start, 894
+delete done, 894
+delete start, 895
+delete done, 895
+delete start, 896
+delete done, 896
+delete start, 897
+delete done, 897
+delete start, 898
+delete done, 898
+delete start, 899
+delete done, 899
+delete start, 900
+delete done, 900
+delete start, 901
+delete done, 901
+delete start, 902
+delete done, 902
+delete start, 903
+delete done, 903
+delete start, 904
+delete done, 904
+delete start, 905
+delete done, 905
+delete start, 906
+delete done, 906
+delete start, 907
+delete done, 907
+delete start, 908
+delete done, 908
+delete start, 909
+delete done, 909
+delete start, 910
+delete done, 910
+delete start, 911
+delete done, 911
+delete start, 912
+delete done, 912
+delete start, 913
+delete done, 913
+delete start, 914
+delete done, 914
+delete start, 915
+delete done, 915
+delete start, 916
+delete done, 916
+delete start, 917
+delete done, 917
+delete start, 918
+delete done, 918
+delete start, 919
+delete done, 919
+delete start, 920
+delete done, 920
+delete start, 921
+delete done, 921
+delete start, 922
+delete done, 922
+delete start, 923
+delete done, 923
+delete start, 924
+delete done, 924
+delete start, 925
+delete done, 925
+delete start, 926
+delete done, 926
+delete start, 927
+delete done, 927
+delete start, 928
+delete done, 928
+delete start, 929
+delete done, 929
+delete start, 930
+delete done, 930
+delete start, 931
+delete done, 931
+delete start, 932
+delete done, 932
+delete start, 933
+delete done, 933
+delete start, 934
+delete done, 934
+delete start, 935
+delete done, 935
+delete start, 936
+delete done, 936
+delete start, 937
+delete done, 937
+delete start, 938
+delete done, 938
+delete start, 939
+delete done, 939
+delete start, 940
+delete done, 940
+delete start, 941
+delete done, 941
+delete start, 942
+delete done, 942
+delete start, 943
+delete done, 943
+delete start, 944
+delete done, 944
+delete start, 945
+delete done, 945
+delete start, 946
+delete done, 946
+delete start, 947
+delete done, 947
+delete start, 948
+delete done, 948
+delete start, 949
+delete done, 949
+delete start, 950
+delete done, 950
+delete start, 951
+delete done, 951
+delete start, 952
+delete done, 952
+delete start, 953
+delete done, 953
+delete start, 954
+delete done, 954
+delete start, 955
+delete done, 955
+delete start, 956
+delete done, 956
+delete start, 957
+delete done, 957
+delete start, 958
+delete done, 958
+delete start, 959
+delete done, 959
+delete start, 960
+delete done, 960
+delete start, 961
+delete done, 961
+delete start, 962
+delete done, 962
+delete start, 963
+delete done, 963
+delete start, 964
+delete done, 964
+delete start, 965
+delete done, 965
+delete start, 966
+delete done, 966
+delete start, 967
+delete done, 967
+delete start, 968
+delete done, 968
+delete start, 969
+delete done, 969
+delete start, 970
+delete done, 970
+delete start, 971
+delete done, 971
+delete start, 972
+delete done, 972
+delete start, 973
+delete done, 973
+delete start, 974
+delete done, 974
+delete start, 975
+delete done, 975
+delete start, 976
+delete done, 976
+delete start, 977
+delete done, 977
+delete start, 978
+delete done, 978
+delete start, 979
+delete done, 979
+delete start, 980
+delete done, 980
+delete start, 981
+delete done, 981
+delete start, 982
+delete done, 982
+delete start, 983
+delete done, 983
+delete start, 984
+delete done, 984
+delete start, 985
+delete done, 985
+delete start, 986
+delete done, 986
+delete start, 987
+delete done, 987
+delete start, 988
+delete done, 988
+delete start, 989
+delete done, 989
+delete start, 990
+delete done, 990
+delete start, 991
+delete done, 991
+delete start, 992
+delete done, 992
+delete start, 993
+delete done, 993
+delete start, 994
+delete done, 994
+delete start, 995
+delete done, 995
+delete start, 996
+delete done, 996
+delete start, 997
+delete done, 997
+delete start, 998
+delete done, 998
+delete start, 999
+delete done, 999
+deleted 9990
+count done
+sum done
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_commit_mutation_latest_snapshot_append_only"), String("counter"), String("{}"), String("3.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_commit_aborts"), String("counter"), String("{}"), String("3.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_commit_mutation_success"), String("counter"), String("{}"), String("1100.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_commit_mutation_unresolvable_conflict"), String("counter"), String("{}"), String("3.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_modified_segment_exists_in_latest"), String("counter"), String("{}"), String("999.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_remote_io_read_milliseconds"), String("gauge"), String("{}"), String("66119.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_remote_io_read_bytes_after_merged"), String("gauge"), String("{}"), String("664380208.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_deletion_block_range_pruned_nums"), String("gauge"), String("{}"), String("595.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_bytes_block_range_pruning_after"), String("gauge"), String("{}"), String("5298160560.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_deletion_block_range_pruned_whole_block_nums"), String("gauge"), String("{}"), String("0.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_remote_io_seeks"), String("gauge"), String("{}"), String("7693.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_pruning_milliseconds"), String("gauge"), String("{}"), String("5.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_bytes_block_range_pruning_before"), String("gauge"), String("{}"), String("5325880560.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_compact_segments_select_duration_second"), String("gauge"), String("{}"), String("0.1133075")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_block_index_write_nums"), String("gauge"), String("{}"), String("1102.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_segments_range_pruning_before"), String("gauge"), String("{}"), String("1200.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_block_write_nums"), String("gauge"), String("{}"), String("1102.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_bytes_segment_range_pruning_before"), String("gauge"), String("{}"), String("5331480560.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_block_index_write_bytes"), String("gauge"), String("{}"), String("817997399.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_compact_block_read_bytes"), String("gauge"), String("{}"), String("16796640.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_remote_io_seeks_after_merged"), String("gauge"), String("{}"), String("2198.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_bytes_segment_range_pruning_after"), String("gauge"), String("{}"), String("5325880560.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_compact_block_read_milliseconds"), String("gauge"), String("{}"), String("150.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_block_write_bytes"), String("gauge"), String("{}"), String("666659988.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_remote_io_read_parts"), String("gauge"), String("{}"), String("2399.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_block_write_milliseconds"), String("gauge"), String("{}"), String("175902.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_block_index_write_milliseconds"), String("gauge"), String("{}"), String("350725.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_deletion_segment_range_pruned_whole_segment_nums"), String("gauge"), String("{}"), String("0.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_compact_block_read_nums"), String("gauge"), String("{}"), String("300.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_remote_io_read_bytes"), String("gauge"), String("{}"), String("664211958.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_blocks_range_pruning_after"), String("gauge"), String("{}"), String("2695.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_remote_io_deserialize_milliseconds"), String("gauge"), String("{}"), String("16243.0")])
+Row([String("A4eGuYEFxUvb4XrkfROqr"), String("fuse_segments_range_pruning_after"), String("gauge"), String("{}"), String("1100.0")])
