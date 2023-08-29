@@ -35,3 +35,30 @@ pub mod runtime;
 pub use runtime::dump_backtrace;
 pub use runtime::match_join_handle;
 pub use runtime::set_alloc_error_hook;
+
+thread_local! {
+    static RSP: isize = get_rsp();
+}
+
+pub fn get_rsp() -> isize {
+    let rsp: isize;
+    unsafe {
+        core::arch::asm!("mov {}, rsp", out(reg) rsp);
+    }
+    rsp
+}
+pub fn check() {
+    let rsp = get_rsp();
+
+    let base = RSP.with(|&v| v);
+
+    let stack_size = base - rsp;
+
+    let m = stack_size / 1024 / 1024;
+
+    let k = (stack_size - m * 1024 * 1024) / 1024;
+
+    let b = stack_size - m * 1024 * 1024 - k * 1024;
+
+    println!("stack size: {}M {}K {}B", m, k, b);
+}

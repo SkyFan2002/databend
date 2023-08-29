@@ -16,6 +16,7 @@ use std::collections::HashMap;
 use std::sync::Arc;
 use std::time::Instant;
 
+use common_base::check;
 use common_catalog::plan::PartInfoPtr;
 use common_catalog::plan::PartStatistics;
 use common_catalog::plan::Partitions;
@@ -57,6 +58,7 @@ impl FuseTable {
         push_downs: Option<PushDownInfo>,
         dry_run: bool,
     ) -> Result<(PartStatistics, Partitions)> {
+        check();
         debug!("fuse table do read partitions, push downs:{:?}", push_downs);
         let snapshot = self.read_table_snapshot().await?;
         let is_lazy = push_downs

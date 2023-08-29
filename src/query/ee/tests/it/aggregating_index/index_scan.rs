@@ -16,6 +16,7 @@ use std::fmt::Display;
 use std::sync::Arc;
 
 use common_base::base::tokio;
+use common_base::check;
 use common_exception::Result;
 use common_expression::block_debug::pretty_format_blocks;
 use common_expression::DataBlock;
@@ -34,6 +35,7 @@ use futures_util::TryStreamExt;
 
 #[tokio::test(flavor = "multi_thread")]
 async fn test_index_scan() -> Result<()> {
+    check();
     test_index_scan_impl("parquet").await?;
     test_index_scan_impl("native").await
 }
