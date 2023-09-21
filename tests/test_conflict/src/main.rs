@@ -3,7 +3,7 @@ use futures_util::StreamExt;
 
 #[tokio::main]
 async fn main() {
-    let dsn = "your-dsn";
+    let dsn = "databend://root:@localhost:8000/?sslmode=disable";
     let conn = new_connection(&dsn).unwrap();
     conn.exec("DROP TABLE IF EXISTS test").await.unwrap();
     conn.exec(
