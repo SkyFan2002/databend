@@ -1,0 +1,1 @@
+bendsql  --dsn "databend://root:@localhost:8000/?sslmode=disable&enable_distributed_replace_into=1" --query="replace into t on(number) select * from t"

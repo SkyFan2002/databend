@@ -1,0 +1,14 @@
+Killed REPLACE INTO query with ID: d21eefdb-d8d5-4da1-8b7a-28377131665f
+Killed REPLACE INTO query with ID: 4e3d56b7-54f5-4744-9be6-31e776708669
+Killed REPLACE INTO query with ID: 7b7aed15-5d21-4590-82ae-d2b9fe330d2d
+Killed REPLACE INTO query with ID: 7b430b09-d4f4-45b3-96b5-d4a7fd56d11c
+Killed REPLACE INTO query with ID: b3f5c422-b962-498f-afd3-d9bd83872714
+Killed REPLACE INTO query with ID: 9c194cf8-f0c6-4bff-8a8d-bd6fa3fc313b
+Killed REPLACE INTO query with ID: 3f1c84eb-8006-459f-b5c3-85dbc3bf6c29
+Killed REPLACE INTO query with ID: b73c19c0-ec6d-43d6-a4d6-9f9fcdecb823
+Killed REPLACE INTO query with ID: 0bcd75c8-0b5b-4151-a6ba-35bc5310d5d9
+Killed REPLACE INTO query with ID: 4dc0940f-8cbd-4e67-a0bf-11e4847346c3
+Traceback (most recent call last):
+  File "/data1/skyfan/dev/databend/kill.py", line 43, in <module>
+    time.sleep(interval)
+KeyboardInterrupt

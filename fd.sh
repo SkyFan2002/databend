@@ -1,0 +1,1 @@
+for i in `pgrep -f ".*databend-query.*"`; do echo "pid:$i"; ls /proc/$i/fd/ -l | wc -l; done

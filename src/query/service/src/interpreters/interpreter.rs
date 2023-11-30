@@ -22,6 +22,7 @@ use common_expression::SendableDataBlockStream;
 use common_pipeline_core::SourcePipeBuilder;
 use log::error;
 
+use crate::api::rpc::flight_client::print_undrop;
 use crate::interpreters::InterpreterMetrics;
 use crate::interpreters::InterpreterQueryLog;
 use crate::pipelines::executor::ExecutorSettings;
@@ -45,6 +46,7 @@ pub trait Interpreter: Sync + Send {
     #[async_backtrace::framed]
     #[minitrace::trace]
     async fn execute(&self, ctx: Arc<QueryContext>) -> Result<SendableDataBlockStream> {
+        print_undrop();
         ctx.set_status_info("building pipeline");
         InterpreterMetrics::record_query_start(&ctx);
         log_query_start(&ctx);

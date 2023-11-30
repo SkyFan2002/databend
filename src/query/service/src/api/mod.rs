@@ -50,5 +50,5 @@ pub use rpc_service::RpcService;
 
 pub mod http;
 mod http_service;
-mod rpc;
+pub mod rpc;
 mod rpc_service;

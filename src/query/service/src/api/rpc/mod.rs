@@ -18,7 +18,7 @@ pub use flight_service::DatabendQueryFlightService;
 
 mod exchange;
 mod flight_actions;
-mod flight_client;
+pub mod flight_client;
 mod flight_scatter;
 mod flight_scatter_broadcast;
 mod flight_scatter_hash;

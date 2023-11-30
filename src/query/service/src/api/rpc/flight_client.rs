@@ -12,8 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::backtrace::Backtrace;
 use std::convert::TryInto;
 use std::error::Error;
+use std::sync::atomic::AtomicUsize;
 use std::sync::Arc;
 
 use async_channel::Receiver;
@@ -31,6 +33,7 @@ use common_exception::ErrorCode;
 use common_exception::Result;
 use futures::StreamExt;
 use futures_util::future::Either;
+use parking_lot::Mutex;
 use tonic::transport::channel::Channel;
 use tonic::Request;
 use tonic::Status;
@@ -40,8 +43,32 @@ use crate::api::rpc::flight_actions::FlightAction;
 use crate::api::rpc::packets::DataPacket;
 use crate::api::rpc::request_builder::RequestBuilder;
 
+static FLIGHT_CLIENT_ID: AtomicUsize = AtomicUsize::new(0);
+
+static DROP_FLIGHT_CLIENT: Mutex<Vec<usize>> = Mutex::new(Vec::new());
+
 pub struct FlightClient {
     inner: FlightServiceClient<Channel>,
+    id: usize,
+}
+
+impl Drop for FlightClient {
+    fn drop(&mut self) {
+        let mut drop_flight_client = DROP_FLIGHT_CLIENT.lock();
+        drop_flight_client.push(self.id);
+    }
+}
+
+pub fn print_undrop() {
+    let drop_flight_client = DROP_FLIGHT_CLIENT.lock();
+    let alloc_flight_client = FLIGHT_CLIENT_ID.load(std::sync::atomic::Ordering::SeqCst);
+    let mut undrop = Vec::new();
+    for i in 0..alloc_flight_client {
+        if !drop_flight_client.contains(&i) {
+            undrop.push(i);
+        }
+    }
+    println!("undrop:{:?}", undrop);
 }
 
 // TODO: Integration testing required
@@ -49,8 +76,10 @@ impl FlightClient {
     pub fn new(mut inner: FlightServiceClient<Channel>) -> FlightClient {
         inner = inner.max_decoding_message_size(usize::MAX);
         inner = inner.max_encoding_message_size(usize::MAX);
-
-        FlightClient { inner }
+        let id = FLIGHT_CLIENT_ID.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        println!("backtrace:{:?}", Backtrace::capture());
+        println!("id:{:?}", id);
+        FlightClient { inner, id }
     }
 
     #[async_backtrace::framed]

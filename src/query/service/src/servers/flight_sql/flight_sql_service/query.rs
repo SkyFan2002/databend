@@ -39,6 +39,7 @@ use tonic::Status;
 use super::status;
 use super::DoGetStream;
 use super::FlightSqlServiceImpl;
+use crate::api::rpc::flight_client::print_undrop;
 use crate::interpreters::InterpreterFactory;
 use crate::sessions::QueryContext;
 use crate::sessions::Session;
@@ -222,6 +223,7 @@ impl FlightSqlServiceImpl {
                 if let Some(progress_flight_data) = get_progress(&context, true) {
                     let _ = sender.send(Ok(progress_flight_data)).await;
                 }
+                print_undrop();
             });
         }
 
