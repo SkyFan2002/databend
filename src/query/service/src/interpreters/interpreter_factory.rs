@@ -16,6 +16,7 @@ use std::sync::Arc;
 
 use databend_common_ast::ast::ExplainKind;
 use databend_common_exception::Result;
+use databend_common_storages_fuse::TableContext;
 use log::error;
 
 use super::interpreter_catalog_create::CreateCatalogInterpreter;
@@ -78,6 +79,7 @@ impl InterpreterFactory {
     }
 
     pub fn get_inner(ctx: Arc<QueryContext>, plan: &Plan) -> Result<InterpreterPtr> {
+        println!("session id: {:?}", ctx.get_current_session_id());
         match plan {
             Plan::Query {
                 s_expr,
