@@ -124,7 +124,7 @@ async fn main() -> Result<()> {
     let config = InspectorConfig::parse();
 
     if let Err(err) = run(&config).await {
-        info!("Error: {}", err);
+        eprintln!("Error: {}", err);
     }
     Ok(())
 }

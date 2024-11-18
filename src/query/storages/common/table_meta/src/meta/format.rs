@@ -146,6 +146,7 @@ pub fn encode<T: Serialize>(encoding: &MetaEncoding, data: &T) -> Result<Vec<u8>
 }
 
 pub fn decode<'a, T: Deserialize<'a>>(encoding: &MetaEncoding, data: &'a [u8]) -> Result<T> {
+    eprintln!("decode: {:?}", encoding);
     match encoding {
         MetaEncoding::Bincode => {
             Ok(bincode_v1::deserialize(data).map_err(|e| Error::new(ErrorKind::InvalidData, e))?)

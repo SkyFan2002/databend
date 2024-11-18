@@ -40,8 +40,459 @@ use crate::meta::SnapshotId;
 use crate::meta::Statistics;
 use crate::meta::Versioned;
 
+#[doc(hidden)]
+#[allow(non_upper_case_globals, unused_attributes, unused_qualifications)]
+const _: () = {
+    #[allow(unused_extern_crates, clippy::useless_attribute)]
+    extern crate serde as _serde;
+    #[automatically_derived]
+    impl<'de> _serde::Deserialize<'de> for TableSnapshot {
+        fn deserialize<__D>(__deserializer: __D) -> _serde::__private::Result<Self, __D::Error>
+        where __D: _serde::Deserializer<'de> {
+            #[allow(non_camel_case_types)]
+            #[doc(hidden)]
+            enum __Field {
+                __field0,
+                __field1,
+                __field2,
+                __field3,
+                __field4,
+                __field5,
+                __field6,
+                __field7,
+                __field8,
+                __field9,
+                __field10,
+                __ignore,
+            }
+            #[doc(hidden)]
+            struct __FieldVisitor;
+
+            impl<'de> _serde::de::Visitor<'de> for __FieldVisitor {
+                type Value = __Field;
+                fn expecting(
+                    &self,
+                    __formatter: &mut _serde::__private::Formatter,
+                ) -> _serde::__private::fmt::Result {
+                    _serde::__private::Formatter::write_str(__formatter, "field identifier")
+                }
+                fn visit_u64<__E>(
+                    self,
+                    __value: u64,
+                ) -> _serde::__private::Result<Self::Value, __E>
+                where
+                    __E: _serde::de::Error,
+                {
+                    match __value {
+                        0u64 => _serde::__private::Ok(__Field::__field0),
+                        1u64 => _serde::__private::Ok(__Field::__field1),
+                        2u64 => _serde::__private::Ok(__Field::__field2),
+                        3u64 => _serde::__private::Ok(__Field::__field3),
+                        4u64 => _serde::__private::Ok(__Field::__field4),
+                        5u64 => _serde::__private::Ok(__Field::__field5),
+                        6u64 => _serde::__private::Ok(__Field::__field6),
+                        7u64 => _serde::__private::Ok(__Field::__field7),
+                        8u64 => _serde::__private::Ok(__Field::__field8),
+                        9u64 => _serde::__private::Ok(__Field::__field9),
+                        10u64 => _serde::__private::Ok(__Field::__field10),
+                        _ => _serde::__private::Ok(__Field::__ignore),
+                    }
+                }
+                fn visit_str<__E>(
+                    self,
+                    __value: &str,
+                ) -> _serde::__private::Result<Self::Value, __E>
+                where
+                    __E: _serde::de::Error,
+                {
+                    match __value {
+                        "format_version" => _serde::__private::Ok(__Field::__field0),
+                        "snapshot_id" => _serde::__private::Ok(__Field::__field1),
+                        "timestamp" => _serde::__private::Ok(__Field::__field2),
+                        "prev_table_seq" => _serde::__private::Ok(__Field::__field3),
+                        "prev_snapshot_id" => _serde::__private::Ok(__Field::__field4),
+                        "schema" => _serde::__private::Ok(__Field::__field5),
+                        "summary" => _serde::__private::Ok(__Field::__field6),
+                        "segments" => _serde::__private::Ok(__Field::__field7),
+                        "cluster_key_meta" => _serde::__private::Ok(__Field::__field8),
+                        "table_statistics_location" => _serde::__private::Ok(__Field::__field9),
+                        "least_visible_timestamp" => _serde::__private::Ok(__Field::__field10),
+                        _ => _serde::__private::Ok(__Field::__ignore),
+                    }
+                }
+                fn visit_bytes<__E>(
+                    self,
+                    __value: &[u8],
+                ) -> _serde::__private::Result<Self::Value, __E>
+                where
+                    __E: _serde::de::Error,
+                {
+                    match __value {
+                        b"format_version" => _serde::__private::Ok(__Field::__field0),
+                        b"snapshot_id" => _serde::__private::Ok(__Field::__field1),
+                        b"timestamp" => _serde::__private::Ok(__Field::__field2),
+                        b"prev_table_seq" => _serde::__private::Ok(__Field::__field3),
+                        b"prev_snapshot_id" => _serde::__private::Ok(__Field::__field4),
+                        b"schema" => _serde::__private::Ok(__Field::__field5),
+                        b"summary" => _serde::__private::Ok(__Field::__field6),
+                        b"segments" => _serde::__private::Ok(__Field::__field7),
+                        b"cluster_key_meta" => _serde::__private::Ok(__Field::__field8),
+                        b"table_statistics_location" => _serde::__private::Ok(__Field::__field9),
+                        b"least_visible_timestamp" => _serde::__private::Ok(__Field::__field10),
+                        _ => _serde::__private::Ok(__Field::__ignore),
+                    }
+                }
+            }
+            impl<'de> _serde::Deserialize<'de> for __Field {
+                #[inline]
+                fn deserialize<__D>(
+                    __deserializer: __D,
+                ) -> _serde::__private::Result<Self, __D::Error>
+                where __D: _serde::Deserializer<'de> {
+                    _serde::Deserializer::deserialize_identifier(__deserializer, __FieldVisitor)
+                }
+            }
+            #[doc(hidden)]
+            struct __Visitor<'de> {
+                marker: _serde::__private::PhantomData<TableSnapshot>,
+                lifetime: _serde::__private::PhantomData<&'de ()>,
+            }
+            impl<'de> _serde::de::Visitor<'de> for __Visitor<'de> {
+                type Value = TableSnapshot;
+                fn expecting(
+                    &self,
+                    __formatter: &mut _serde::__private::Formatter,
+                ) -> _serde::__private::fmt::Result {
+                    _serde::__private::Formatter::write_str(__formatter, "struct TableSnapshot")
+                }
+                #[inline]
+                fn visit_seq<__A>(
+                    self,
+                    mut __seq: __A,
+                ) -> _serde::__private::Result<Self::Value, __A::Error>
+                where
+                    __A: _serde::de::SeqAccess<'de>,
+                {
+                    let __field0 =
+                        match _serde::de::SeqAccess::next_element::<FormatVersion>(&mut __seq)? {
+                            _serde::__private::Some(__value) => __value,
+                            _serde::__private::None => {
+                                return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                    0usize,
+                                    &"struct TableSnapshot with 11 elements",
+                                ));
+                            }
+                        };
+                    let __field1 =
+                        match _serde::de::SeqAccess::next_element::<SnapshotId>(&mut __seq)? {
+                            _serde::__private::Some(__value) => __value,
+                            _serde::__private::None => {
+                                return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                    1usize,
+                                    &"struct TableSnapshot with 11 elements",
+                                ));
+                            }
+                        };
+                    let __field2 = match _serde::de::SeqAccess::next_element::<Option<DateTime<Utc>>>(
+                        &mut __seq,
+                    )? {
+                        _serde::__private::Some(__value) => __value,
+                        _serde::__private::None => {
+                            return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                2usize,
+                                &"struct TableSnapshot with 11 elements",
+                            ));
+                        }
+                    };
+                    let __field3 =
+                        match _serde::de::SeqAccess::next_element::<Option<u64>>(&mut __seq)? {
+                            _serde::__private::Some(__value) => __value,
+                            _serde::__private::None => {
+                                return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                    3usize,
+                                    &"struct TableSnapshot with 11 elements",
+                                ));
+                            }
+                        };
+                    let __field4 = match _serde::de::SeqAccess::next_element::<
+                        Option<(SnapshotId, FormatVersion)>,
+                    >(&mut __seq)?
+                    {
+                        _serde::__private::Some(__value) => __value,
+                        _serde::__private::None => {
+                            return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                4usize,
+                                &"struct TableSnapshot with 11 elements",
+                            ));
+                        }
+                    };
+                    let __field5 =
+                        match _serde::de::SeqAccess::next_element::<TableSchema>(&mut __seq)? {
+                            _serde::__private::Some(__value) => __value,
+                            _serde::__private::None => {
+                                return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                    5usize,
+                                    &"struct TableSnapshot with 11 elements",
+                                ));
+                            }
+                        };
+                    let __field6 =
+                        match _serde::de::SeqAccess::next_element::<Statistics>(&mut __seq)? {
+                            _serde::__private::Some(__value) => __value,
+                            _serde::__private::None => {
+                                return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                    6usize,
+                                    &"struct TableSnapshot with 11 elements",
+                                ));
+                            }
+                        };
+                    let __field7 =
+                        match _serde::de::SeqAccess::next_element::<Vec<Location>>(&mut __seq)? {
+                            _serde::__private::Some(__value) => __value,
+                            _serde::__private::None => {
+                                return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                    7usize,
+                                    &"struct TableSnapshot with 11 elements",
+                                ));
+                            }
+                        };
+                    let __field8 = match _serde::de::SeqAccess::next_element::<Option<ClusterKey>>(
+                        &mut __seq,
+                    )? {
+                        _serde::__private::Some(__value) => __value,
+                        _serde::__private::None => {
+                            return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                8usize,
+                                &"struct TableSnapshot with 11 elements",
+                            ));
+                        }
+                    };
+                    let __field9 =
+                        match _serde::de::SeqAccess::next_element::<Option<String>>(&mut __seq)? {
+                            _serde::__private::Some(__value) => __value,
+                            _serde::__private::None => {
+                                return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                    9usize,
+                                    &"struct TableSnapshot with 11 elements",
+                                ));
+                            }
+                        };
+                    let __field10 = match _serde::de::SeqAccess::next_element::<
+                        Option<DateTime<Utc>>,
+                    >(&mut __seq)?
+                    {
+                        _serde::__private::Some(__value) => __value,
+                        _serde::__private::None => {
+                            return _serde::__private::Err(_serde::de::Error::invalid_length(
+                                10usize,
+                                &"struct TableSnapshot with 11 elements",
+                            ));
+                        }
+                    };
+                    _serde::__private::Ok(TableSnapshot {
+                        format_version: __field0,
+                        snapshot_id: __field1,
+                        timestamp: __field2,
+                        prev_table_seq: __field3,
+                        prev_snapshot_id: __field4,
+                        schema: __field5,
+                        summary: __field6,
+                        segments: __field7,
+                        cluster_key_meta: __field8,
+                        table_statistics_location: __field9,
+                        least_visible_timestamp: __field10,
+                    })
+                }
+                #[inline]
+                fn visit_map<__A>(
+                    self,
+                    mut __map: __A,
+                ) -> _serde::__private::Result<Self::Value, __A::Error>
+                where
+                    __A: _serde::de::MapAccess<'de>,
+                {
+                    let mut __field0: _serde::__private::Option<FormatVersion> =
+                        _serde::__private::None;
+                    let mut __field1: _serde::__private::Option<SnapshotId> =
+                        _serde::__private::None;
+                    let mut __field2: _serde::__private::Option<Option<DateTime<Utc>>> =
+                        _serde::__private::None;
+                    let mut __field3: _serde::__private::Option<Option<u64>> =
+                        _serde::__private::None;
+                    let mut __field4: _serde::__private::Option<
+                        Option<(SnapshotId, FormatVersion)>,
+                    > = _serde::__private::None;
+                    let mut __field5: _serde::__private::Option<TableSchema> =
+                        _serde::__private::None;
+                    let mut __field6: _serde::__private::Option<Statistics> =
+                        _serde::__private::None;
+                    let mut __field7: _serde::__private::Option<Vec<Location>> =
+                        _serde::__private::None;
+                    let mut __field8: _serde::__private::Option<Option<ClusterKey>> =
+                        _serde::__private::None;
+                    let mut __field9: _serde::__private::Option<Option<String>> =
+                        _serde::__private::None;
+                    let mut __field10: _serde::__private::Option<Option<DateTime<Utc>>> =
+                        _serde::__private::None;
+                    while let _serde::__private::Some(__key) =
+                        _serde::de::MapAccess::next_key::<__Field>(&mut __map)?
+                    {
+                        match __key {
+                            __Field::__field0 => {
+                                let value =
+                                    _serde::de::MapAccess::next_value::<FormatVersion>(&mut __map);
+                                eprintln!("format_version: {:?}", value);
+                            }
+                            __Field::__field1 => {
+                                let value =
+                                    _serde::de::MapAccess::next_value::<SnapshotId>(&mut __map);
+                                eprintln!("snapshot_id: {:?}", value);
+                            }
+                            __Field::__field2 => {
+                                let value = _serde::de::MapAccess::next_value::<
+                                    Option<DateTime<Utc>>,
+                                >(&mut __map);
+                                eprintln!("timestamp: {:?}", value);
+                            }
+                            __Field::__field3 => {
+                                let value =
+                                    _serde::de::MapAccess::next_value::<Option<u64>>(&mut __map);
+                                eprintln!("prev_table_seq: {:?}", value);
+                            }
+                            __Field::__field4 => {
+                                let value = _serde::de::MapAccess::next_value::<
+                                    Option<(SnapshotId, FormatVersion)>,
+                                >(&mut __map);
+                                eprintln!("prev_snapshot_id: {:?}", value);
+                            }
+                            __Field::__field5 => {
+                                let value =
+                                    _serde::de::MapAccess::next_value::<TableSchema>(&mut __map);
+                                eprintln!("schema: {:?}", value);
+                            }
+                            __Field::__field6 => {
+                                let value =
+                                    _serde::de::MapAccess::next_value::<Statistics>(&mut __map);
+                                eprintln!("summary: {:?}", value);
+                            }
+                            __Field::__field7 => {
+                                let value =
+                                    _serde::de::MapAccess::next_value::<Vec<Location>>(&mut __map);
+                                eprintln!("segments: {:?}", value);
+                            }
+                            __Field::__field8 => {
+                                let value = _serde::de::MapAccess::next_value::<Option<ClusterKey>>(
+                                    &mut __map,
+                                );
+                                eprintln!("cluster_key_meta: {:?}", value);
+                            }
+                            __Field::__field9 => {
+                                let value =
+                                    _serde::de::MapAccess::next_value::<Option<String>>(&mut __map);
+                                eprintln!("table_statistics_location: {:?}", value);
+                            }
+                            __Field::__field10 => {
+                                let value = _serde::de::MapAccess::next_value::<
+                                    Option<DateTime<Utc>>,
+                                >(&mut __map);
+                                eprintln!("least_visible_timestamp: {:?}", value);
+                            }
+                            _ => {
+                                let value = _serde::de::MapAccess::next_value::<_serde::de::IgnoredAny>(
+                                    &mut __map,
+                                )?;
+                                eprintln!("ignored: {:?}", value);
+                            }
+                        }
+                    }
+                    let __field0 = match __field0 {
+                        _serde::__private::Some(__field0) => __field0,
+                        _serde::__private::None => Default::default(),
+                    };
+                    let __field1 = match __field1 {
+                        _serde::__private::Some(__field1) => __field1,
+                        _serde::__private::None => Default::default(),
+                    };
+                    let __field2 = match __field2 {
+                        _serde::__private::Some(__field2) => __field2,
+                        _serde::__private::None => Default::default(),
+                    };
+                    let __field3 = match __field3 {
+                        _serde::__private::Some(__field3) => __field3,
+                        _serde::__private::None => Default::default(),
+                    };
+                    let __field4 = match __field4 {
+                        _serde::__private::Some(__field4) => __field4,
+                        _serde::__private::None => Default::default(),
+                    };
+                    let __field5 = match __field5 {
+                        _serde::__private::Some(__field5) => __field5,
+                        _serde::__private::None => Default::default(),
+                    };
+                    let __field6 = match __field6 {
+                        _serde::__private::Some(__field6) => __field6,
+                        _serde::__private::None => Default::default(),
+                    };
+                    let __field7 = match __field7 {
+                        _serde::__private::Some(__field7) => __field7,
+                        _serde::__private::None => Default::default(),
+                    };
+                    let __field8 = match __field8 {
+                        _serde::__private::Some(__field8) => __field8,
+                        _serde::__private::None => Default::default(),
+                    };
+                    let __field9 = match __field9 {
+                        _serde::__private::Some(__field9) => __field9,
+                        _serde::__private::None => Default::default(),
+                    };
+                    let __field10 = match __field10 {
+                        _serde::__private::Some(__field10) => __field10,
+                        _serde::__private::None => Default::default(),
+                    };
+                    _serde::__private::Ok(TableSnapshot {
+                        format_version: __field0,
+                        snapshot_id: __field1,
+                        timestamp: __field2,
+                        prev_table_seq: __field3,
+                        prev_snapshot_id: __field4,
+                        schema: __field5,
+                        summary: __field6,
+                        segments: __field7,
+                        cluster_key_meta: __field8,
+                        table_statistics_location: __field9,
+                        least_visible_timestamp: __field10,
+                    })
+                }
+            }
+            #[doc(hidden)]
+            const FIELDS: &'static [&'static str] = &[
+                "format_version",
+                "snapshot_id",
+                "timestamp",
+                "prev_table_seq",
+                "prev_snapshot_id",
+                "schema",
+                "summary",
+                "segments",
+                "cluster_key_meta",
+                "table_statistics_location",
+                "least_visible_timestamp",
+            ];
+            _serde::Deserializer::deserialize_struct(
+                __deserializer,
+                "TableSnapshot",
+                FIELDS,
+                __Visitor {
+                    marker: _serde::__private::PhantomData::<TableSnapshot>,
+                    lifetime: _serde::__private::PhantomData,
+                },
+            )
+        }
+    }
+};
+
 /// The structure of the TableSnapshot is the same as that of v2, but the serialization and deserialization methods are different
-#[derive(Serialize, Deserialize, Clone, Debug)]
+#[derive(Serialize, Clone, Debug)]
 pub struct TableSnapshot {
     /// format version of TableSnapshot meta data
     ///
