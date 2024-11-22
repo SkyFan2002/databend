@@ -93,6 +93,7 @@ impl TempTblMgr {
     }
 
     pub fn create_table(&mut self, req: CreateTableReq) -> Result<CreateTableReply> {
+        println!("create_table: {:?}", req);
         let CreateTableReq {
             create_option,
             name_ident,
@@ -123,13 +124,17 @@ impl TempTblMgr {
                     .as_ref()
                     .map(|o| format!("{}.{}", name_ident.db_name, o))
                     .unwrap_or(desc);
-                self.name_to_id.insert(desc, table_id);
+                let old_id = self.name_to_id.insert(desc, table_id);
+                if let Some(old_id) = old_id {
+                    self.id_to_table.remove(&old_id);
+                }
                 self.id_to_table.insert(table_id, TempTable {
                     db_name: name_ident.db_name,
                     table_name: orphan_table_name.clone().unwrap_or(name_ident.table_name),
                     meta: table_meta,
                     copied_files: BTreeMap::new(),
                 });
+                println!("self: {:?}", self);
                 self.inc_next_id();
                 true
             }
@@ -149,6 +154,7 @@ impl TempTblMgr {
     }
 
     pub fn commit_table_meta(&mut self, req: &CommitTableMetaReq) -> Result<CommitTableMetaReply> {
+        println!("commit_table_meta: {:?}", req);
         let orphan_desc = format!(
             "{}.{}",
             req.name_ident.db_name,
@@ -157,11 +163,14 @@ impl TempTblMgr {
         let desc = format!("{}.{}", req.name_ident.db_name, req.name_ident.table_name);
         match self.name_to_id.remove(&orphan_desc) {
             Some(id) => {
-                self.name_to_id.insert(desc, id);
+                let old_id = self.name_to_id.insert(desc, id);
+                if let Some(old_id) = old_id {
+                    self.id_to_table.remove(&old_id);
+                }
                 let table = self.id_to_table.get_mut(&id).unwrap();
                 table.db_name = req.name_ident.db_name.clone();
                 table.table_name = req.name_ident.table_name.clone();
-
+                println!("self: {:?}", self);
                 Ok(CommitTableMetaReply {})
             }
             None => Err(ErrorCode::UnknownTable(format!(
@@ -209,6 +218,7 @@ impl TempTblMgr {
     }
 
     pub fn get_table(&self, database_name: &str, table_name: &str) -> Result<Option<TableInfo>> {
+        println!("get_temp_table: {:?}", (database_name, table_name));
         let desc = format!("{}.{}", database_name, table_name);
         let id = self.name_to_id.get(&desc);
         let Some(id) = id else {
@@ -225,6 +235,7 @@ impl TempTblMgr {
             ..Default::default()
         };
         let table_info = TableInfo::new(database_name, table_name, ident, table.meta.clone());
+        println!("table_info: {:?}", table_info);
         Ok(Some(table_info))
     }
 

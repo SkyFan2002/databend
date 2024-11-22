@@ -159,6 +159,10 @@ impl Binder {
             self.bind_set_expr(bind_context, right, &[], None)?;
 
         if left_bind_context.columns.len() != right_bind_context.columns.len() {
+            println!(
+                "left_bind_context.columns: {:?}, right_bind_context.columns: {:?}",
+                left_bind_context.columns, right_bind_context.columns
+            );
             return Err(ErrorCode::SemanticError(
                 "SetOperation must have the same number of columns",
             ));

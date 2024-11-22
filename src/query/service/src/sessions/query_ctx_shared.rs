@@ -335,8 +335,10 @@ impl QueryContextShared {
         // Always get same table metadata in the same query
 
         let table_meta_key = (catalog.to_string(), database.to_string(), table.to_string());
+        println!("get_table: {:?}", table_meta_key);
 
         let already_in_cache = { self.tables_refs.lock().contains_key(&table_meta_key) };
+        println!("already_in_cache: {:?}", already_in_cache);
         let res = match already_in_cache {
             false => {
                 self.get_table_to_cache(catalog, database, table, max_batch_size)
