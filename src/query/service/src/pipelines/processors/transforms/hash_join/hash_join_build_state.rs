@@ -31,6 +31,8 @@ use databend_common_expression::arrow::and_validities;
 use databend_common_expression::types::DataType;
 use databend_common_expression::types::NumberDomain;
 use databend_common_expression::types::NumberScalar;
+use databend_common_expression::BlockMetaInfo;
+use databend_common_expression::BlockMetaInfoDowncast;
 use databend_common_expression::Column;
 use databend_common_expression::ColumnBuilder;
 use databend_common_expression::ColumnRef;
@@ -117,6 +119,7 @@ pub struct HashJoinBuildState {
 
     /// Spill related states.
     pub(crate) memory_settings: MemorySettings,
+    pub(crate) broadcast_id: u32,
 }
 
 impl HashJoinBuildState {
@@ -128,6 +131,7 @@ impl HashJoinBuildState {
         build_projections: &ColumnSet,
         hash_join_state: Arc<HashJoinState>,
         num_threads: usize,
+        broadcast_id: u32,
     ) -> Result<Arc<HashJoinBuildState>> {
         let hash_key_types = build_keys
             .iter()
@@ -164,6 +168,7 @@ impl HashJoinBuildState {
             build_hash_table_tasks: Default::default(),
             mutex: Default::default(),
             memory_settings,
+            broadcast_id,
         }))
     }
 
@@ -267,6 +272,44 @@ impl HashJoinBuildState {
                     .generation_state
                     .build_num_rows
             };
+
+            #[derive(serde::Serialize, serde::Deserialize, Clone, Debug, Default, PartialEq)]
+            struct BuildInfo {
+                node_id: String,
+                num_rows: usize,
+                build_key: Vec<RemoteExpr>,
+            }
+
+            #[typetag::serde(name = "build_info")]
+            impl BlockMetaInfo for BuildInfo {
+                fn equals(&self, info: &Box<dyn BlockMetaInfo>) -> bool {
+                    BuildInfo::downcast_ref_from(info).is_some_and(|other| self == other)
+                }
+
+                fn clone_self(&self) -> Box<dyn BlockMetaInfo> {
+                    Box::new(self.clone())
+                }
+            }
+
+            let broadcast_source_sender = self.ctx.broadcast_source_sender(self.broadcast_id);
+            let broadcast_sink_receiver = self.ctx.broadcast_sink_receiver(self.broadcast_id);
+            broadcast_source_sender
+                .send_blocking(Box::new(BuildInfo {
+                    node_id: self.ctx.get_cluster().local_id.clone(),
+                    num_rows: build_num_rows,
+                    build_key: self
+                        .hash_join_state
+                        .hash_join_desc
+                        .build_keys
+                        .iter()
+                        .map(|expr| expr.as_remote_expr())
+                        .collect(),
+                }))
+                .unwrap();
+            broadcast_source_sender.close();
+            while let Ok(build_info) = broadcast_sink_receiver.recv_blocking() {
+                log::info!("receive build_info: {:?}", build_info);
+            }
 
             // If the build side is empty and there is no spilled data, perform fast path for hash join.
             if build_num_rows == 0

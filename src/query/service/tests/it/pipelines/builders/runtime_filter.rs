@@ -100,6 +100,7 @@ async fn join_build_state(
         &join.build_projections,
         join_state.clone(),
         1,
+        join.broadcast_id,
     )?;
     Ok(build_state)
 }
