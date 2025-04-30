@@ -108,6 +108,7 @@ pub struct HashJoin {
     pub build_side_cache_info: Option<(usize, HashMap<IndexType, usize>)>,
 
     pub runtime_filter: PhysicalRuntimeFilters,
+    pub broadcast_id: u32,
 }
 
 impl HashJoin {
@@ -840,6 +841,7 @@ impl PhysicalPlanBuilder {
             single_to_inner: join.single_to_inner.clone(),
             build_side_cache_info,
             runtime_filter,
+            broadcast_id: self.ctx.get_next_broadcast_id(),
         }))
     }
 
