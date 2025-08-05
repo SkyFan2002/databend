@@ -26,8 +26,9 @@ impl PipelineBuilder {
             |output_port| {
                 CTESource::create(self.ctx.clone(), output_port.clone(), receiver.clone())
             },
-            self.ctx.get_settings().get_max_threads()? as usize,
+            1
         )?;
+        self.main_pipeline.try_resize(self.ctx.get_settings().get_max_threads()? as usize)?;
         Ok(())
     }
 }
