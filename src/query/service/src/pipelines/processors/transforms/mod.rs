@@ -46,7 +46,7 @@ mod window;
 pub use broadcast::BroadcastSinkProcessor;
 pub use broadcast::BroadcastSourceProcessor;
 pub use hash_join::*;
-pub use materialized_cte::CTESource;
+pub use materialized_cte::MaterializedCTESource;
 pub use materialized_cte::MaterializedCteSink;
 pub use sort::*;
 pub use transform_add_computed_columns::TransformAddComputedColumns;

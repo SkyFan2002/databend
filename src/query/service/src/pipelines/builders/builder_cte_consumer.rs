@@ -16,7 +16,7 @@ use databend_common_exception::Result;
 use databend_common_sql::executor::physical_plans::MaterializeCTERef;
 use databend_common_storages_fuse::TableContext;
 
-use crate::pipelines::processors::transforms::CTESource;
+use crate::pipelines::processors::transforms::MaterializedCTESource;
 use crate::pipelines::PipelineBuilder;
 
 impl PipelineBuilder {
@@ -24,7 +24,7 @@ impl PipelineBuilder {
         let receiver = self.ctx.get_materialized_cte_receiver(&cte.cte_name);
         self.main_pipeline.add_source(
             |output_port| {
-                CTESource::create(self.ctx.clone(), output_port.clone(), receiver.clone())
+                MaterializedCTESource::create(self.ctx.clone(), output_port.clone(), receiver.clone())
             },
             1
         )?;

@@ -61,11 +61,11 @@ impl AsyncSink for MaterializedCteSink {
     }
 }
 
-pub struct CTESource {
+pub struct MaterializedCTESource {
     receiver: Receiver<DataBlock>,
 }
 
-impl CTESource {
+impl MaterializedCTESource {
     pub fn create(
         ctx: Arc<dyn TableContext>,
         output_port: Arc<OutputPort>,
@@ -76,7 +76,7 @@ impl CTESource {
 }
 
 #[async_trait::async_trait]
-impl AsyncSource for CTESource {
+impl AsyncSource for MaterializedCTESource {
     const NAME: &'static str = "MaterializeCTESource";
 
     #[async_backtrace::framed]
