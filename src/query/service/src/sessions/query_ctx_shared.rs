@@ -48,7 +48,6 @@ use databend_common_config::GlobalConfig;
 use databend_common_exception::ErrorCode;
 use databend_common_exception::Result;
 use databend_common_expression::BlockMetaInfoPtr;
-use databend_common_expression::DataBlock;
 use databend_common_meta_app::principal::OnErrorMode;
 use databend_common_meta_app::principal::RoleInfo;
 use databend_common_meta_app::principal::UserDefinedConnection;
@@ -74,6 +73,7 @@ use uuid::Uuid;
 use crate::clusters::Cluster;
 use crate::clusters::ClusterDiscovery;
 use crate::pipelines::executor::PipelineExecutor;
+use crate::pipelines::processors::transforms::MaterializedCTEState;
 use crate::sessions::query_affect::QueryAffect;
 use crate::sessions::Session;
 use crate::storages::Table;
@@ -185,8 +185,8 @@ pub struct QueryContextShared {
     pub(in crate::sessions) perf_flag: AtomicBool,
     pub(in crate::sessions) nodes_perf: Arc<Mutex<HashMap<String, String>>>,
 
-    pub(in crate::sessions) materialized_cte_receivers:
-        Arc<Mutex<HashMap<String, Vec<Receiver<DataBlock>>>>>,
+    pub(in crate::sessions) materialized_cte_states:
+        Arc<Mutex<HashMap<String, Arc<MaterializedCTEState>>>>,
 }
 
 #[derive(Default)]
@@ -264,7 +264,7 @@ impl QueryContextShared {
             broadcast_channels: Arc::new(Mutex::new(HashMap::new())),
             perf_flag: AtomicBool::new(false),
             nodes_perf: Arc::new(Mutex::new(HashMap::new())),
-            materialized_cte_receivers: Arc::new(Mutex::new(HashMap::new())),
+            materialized_cte_states: Arc::new(Mutex::new(HashMap::new())),
         }))
     }
 

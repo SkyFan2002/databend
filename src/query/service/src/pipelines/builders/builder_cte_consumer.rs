@@ -21,14 +21,21 @@ use crate::pipelines::PipelineBuilder;
 
 impl PipelineBuilder {
     pub(crate) fn build_cte_consumer(&mut self, cte: &MaterializeCTERef) -> Result<()> {
-        let receiver = self.ctx.get_materialized_cte_receiver(&cte.cte_name);
+        let state = self.ctx.get_materialized_cte_state(&cte.cte_name);
+        let cte_ref_id = state.next_cte_ref_id();
         self.main_pipeline.add_source(
             |output_port| {
-                MaterializedCTESource::create(self.ctx.clone(), output_port.clone(), receiver.clone())
+                MaterializedCTESource::create(
+                    self.ctx.clone(),
+                    output_port.clone(),
+                    state.clone(),
+                    cte_ref_id,
+                )
             },
-            1
+            1,
         )?;
-        self.main_pipeline.try_resize(self.ctx.get_settings().get_max_threads()? as usize)?;
+        self.main_pipeline
+            .try_resize(self.ctx.get_settings().get_max_threads()? as usize)?;
         Ok(())
     }
 }

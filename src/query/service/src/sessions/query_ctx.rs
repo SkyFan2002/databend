@@ -69,7 +69,6 @@ use databend_common_exception::ErrorCode;
 use databend_common_exception::Result;
 use databend_common_expression::BlockMetaInfoPtr;
 use databend_common_expression::BlockThresholds;
-use databend_common_expression::DataBlock;
 use databend_common_expression::Expr;
 use databend_common_expression::FunctionContext;
 use databend_common_expression::Scalar;
@@ -142,6 +141,7 @@ use crate::clusters::Cluster;
 use crate::clusters::ClusterHelper;
 use crate::locks::LockManager;
 use crate::pipelines::executor::PipelineExecutor;
+use crate::pipelines::processors::transforms::MaterializedCTEState;
 use crate::servers::flight::v1::exchange::DataExchangeManager;
 use crate::sessions::query_affect::QueryAffect;
 use crate::sessions::query_ctx_shared::MemoryUpdater;
@@ -588,12 +588,12 @@ impl QueryContext {
         self.shared.table_meta_timestamps.lock().clear();
     }
 
-    pub fn get_materialized_cte_senders(
+    pub fn get_or_init_materialized_cte_state(
         &self,
         cte_name: &str,
         cte_ref_count: usize,
         channel_size: Option<usize>,
-    ) -> Vec<Sender<DataBlock>> {
+    ) -> Arc<MaterializedCTEState> {
         let mut senders = vec![];
         let mut receivers = vec![];
         for _ in 0..cte_ref_count {
@@ -605,17 +605,17 @@ impl QueryContext {
             senders.push(sender);
             receivers.push(receiver);
         }
+        let state = Arc::new(MaterializedCTEState::new(senders, receivers));
         self.shared
-            .materialized_cte_receivers
+            .materialized_cte_states
             .lock()
-            .insert(cte_name.to_string(), receivers);
-        senders
+            .insert(cte_name.to_string(), state.clone());
+        state
     }
 
-    pub fn get_materialized_cte_receiver(&self, cte_name: &str) -> Receiver<DataBlock> {
-        let mut receivers = self.shared.materialized_cte_receivers.lock();
-        let receivers = receivers.get_mut(cte_name).unwrap();
-        receivers.pop().unwrap()
+    pub fn get_materialized_cte_state(&self, cte_name: &str) -> Arc<MaterializedCTEState> {
+        let state = self.shared.materialized_cte_states.lock();
+        state.get(cte_name).unwrap().clone()
     }
 }
 
