@@ -15,6 +15,8 @@
 #![allow(clippy::replace_box)]
 
 use std::sync::Arc;
+use std::sync::atomic::AtomicU16;
+use std::sync::atomic::Ordering;
 
 use databend_base::uniq_id::GlobalUniq;
 use databend_common_catalog::cluster_info::Cluster;
@@ -34,13 +36,19 @@ use databend_common_sql_test_support::run_test_case_core;
 use databend_meta_client::types::NodeInfo;
 use databend_query::clusters::ClusterHelper;
 use databend_query::physical_plans::PhysicalPlanBuilder;
+use databend_query::schedulers::Fragmenter;
+use databend_query::schedulers::QueryFragmentsActions;
+use databend_query::servers::flight::v1::exchange::DataExchange;
 use databend_query::sessions::QueryContext;
 use databend_query::test_kits::TestFixture;
 
 use crate::sql::planner::optimizer::test_utils::execute_sql;
+use crate::sql::planner::optimizer::test_utils::plan_sql;
 use crate::sql::planner::optimizer::test_utils::raw_plan;
 
 struct ServiceRunner(Arc<QueryContext>);
+
+static NEXT_TEST_PORT: AtomicU16 = AtomicU16::new(19000);
 
 impl TestCaseRunner for ServiceRunner {
     async fn bind_sql(&self, sql: &str) -> Result<Plan> {
@@ -132,13 +140,128 @@ async fn test_optimizer() -> anyhow::Result<()> {
     Ok(())
 }
 
+#[tokio::test(flavor = "multi_thread", worker_threads = 4)]
+async fn test_merge_input_intermediate_fragment_runs_on_coordinator() -> anyhow::Result<()> {
+    let fixture = TestFixture::setup().await?;
+    let ctx = fixture.new_query_ctx().await?;
+    ctx.get_settings().set_enable_auto_materialize_cte(0)?;
+    ctx.get_settings()
+        .set_setting("enable_dphyp".to_string(), "0".to_string())?;
+    ctx.get_settings()
+        .set_setting("enforce_broadcast_join".to_string(), "1".to_string())?;
+
+    let standalone_local_id = GlobalUniq::unique();
+    let standalone_cluster = Cluster::create(
+        vec![create_node(&standalone_local_id)],
+        standalone_local_id.clone(),
+    );
+    ctx.set_cluster(standalone_cluster.clone());
+
+    let mut nodes_info = Vec::with_capacity(3);
+    for _ in 0..2 {
+        nodes_info.push(create_node(&GlobalUniq::unique()));
+    }
+
+    let local_id = GlobalUniq::unique();
+    nodes_info.push(create_node(&local_id));
+
+    let table_name = format!(
+        "rf_test_limit_broadcast_{}",
+        NEXT_TEST_PORT.fetch_add(1, Ordering::Relaxed)
+    );
+    execute_sql(
+        &ctx,
+        &format!("create table {table_name} as select number as contract_no from numbers(1000)"),
+    )
+    .await?;
+
+    let result = async {
+        ctx.set_cluster(Cluster::create(nodes_info, local_id.clone()));
+
+        let sql = format!(
+            "select * from {table_name} where contract_no in (select contract_no from {table_name} limit 10)"
+        );
+        let plan = plan_sql(&ctx, &sql).await?;
+
+        let metadata = match &plan {
+            Plan::Query { metadata, .. } => metadata.clone(),
+            _ => Arc::new(parking_lot::RwLock::new(Metadata::default())),
+        };
+
+        let settings = ctx.get_settings();
+        let opt_ctx = OptimizerContext::new(ctx.clone(), metadata)
+            .with_settings(&settings)?
+            .set_enable_distributed_optimization(true)
+            .clone();
+        let optimized = optimize(opt_ctx, plan).await?;
+
+        let Plan::Query {
+            metadata,
+            bind_context,
+            s_expr,
+            ..
+        } = &optimized
+        else {
+            unreachable!("expected query plan");
+        };
+
+        let mut builder = PhysicalPlanBuilder::new(metadata.clone(), ctx.clone(), false);
+        let physical = builder.build(s_expr, bind_context.column_set()).await?;
+
+        let fragments = Fragmenter::try_create(ctx.clone())?.build_fragment(&physical)?;
+        let merge_input_fragment_ids = fragments
+            .iter()
+            .filter(|fragment| {
+                fragment
+                    .source_fragments
+                    .iter()
+                    .any(|source| matches!(source.exchange, Some(DataExchange::Merge(_))))
+            })
+            .map(|fragment| fragment.fragment_id)
+            .collect::<Vec<_>>();
+        assert!(
+            !merge_input_fragment_ids.is_empty(),
+            "expected fragment with merge input"
+        );
+
+        let mut fragments_actions = QueryFragmentsActions::create(ctx.clone());
+        for fragment in fragments {
+            fragment.get_actions(ctx.clone(), &mut fragments_actions)?;
+        }
+
+        for fragment_id in merge_input_fragment_ids {
+            let fragment_actions = fragments_actions
+                .fragments_actions
+                .iter()
+                .find(|fragment| fragment.fragment_id == fragment_id)
+                .expect("expected fragment actions");
+
+            assert_eq!(fragment_actions.fragment_actions.len(), 1);
+            assert_eq!(fragment_actions.fragment_actions[0].executor, local_id);
+        }
+
+        Ok::<(), ErrorCode>(())
+    }
+    .await;
+
+    ctx.set_cluster(standalone_cluster);
+    execute_sql(&ctx, &format!("drop table {table_name}")).await?;
+    result?;
+
+    Ok(())
+}
+
 fn create_node(local_id: &str) -> Arc<NodeInfo> {
+    let http_port = NEXT_TEST_PORT.fetch_add(3, Ordering::Relaxed);
+    let flight_port = http_port + 1;
+    let discovery_port = http_port + 2;
+
     let mut node_info = NodeInfo::create(
         local_id.to_string(),
         String::new(),
-        String::new(),
-        String::new(),
-        String::new(),
+        format!("127.0.0.1:{http_port}"),
+        format!("127.0.0.1:{flight_port}"),
+        format!("127.0.0.1:{discovery_port}"),
         String::new(),
         String::new(),
     );

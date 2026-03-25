@@ -112,6 +112,24 @@ impl Fragmenter {
         });
 
         let edges = Self::collect_fragments_edge(fragments.values());
+        let source_fragments = fragments
+            .iter()
+            .map(|(fragment_id, fragment)| (*fragment_id, fragment.clone()))
+            .collect::<HashMap<_, _>>();
+
+        for (source, target) in &edges {
+            let Some(target_fragment) = fragments.get_mut(target) else {
+                continue;
+            };
+
+            let Some(source_fragment) = source_fragments.get(source) else {
+                continue;
+            };
+
+            target_fragment
+                .source_fragments
+                .push(source_fragment.clone());
+        }
 
         for (source, target) in edges {
             let Some(fragment) = fragments.get_mut(&source) else {
@@ -312,7 +330,7 @@ impl DeriveHandle for FragmentDeriveHandle {
 
             let source_fragment = PlanFragment {
                 plan,
-                exchange,
+                exchange: exchange.clone(),
                 fragment_type,
                 source_fragments: vec![],
                 fragment_id: source_fragment_id,
@@ -324,7 +342,7 @@ impl DeriveHandle for FragmentDeriveHandle {
             return Ok(PhysicalPlan::new(ExchangeSource {
                 schema: input_schema,
                 query_id: self.query_id.clone(),
-
+                source_exchange: exchange.clone(),
                 source_fragment_id,
                 meta: PhysicalPlanMeta::with_plan_id("ExchangeSource", plan_id),
             }));

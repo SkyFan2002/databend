@@ -249,6 +249,7 @@ impl DataExchangeManager {
 
         let mut request_exchanges = HashMap::new();
         let mut targets_exchanges = HashMap::<String, Vec<FlightExchange>>::new();
+        let mut local_exchange_channel_sets = HashMap::<String, usize>::new();
 
         for index in env.dataflow_diagram.node_indices() {
             if env.dataflow_diagram[index].id == config.query.node_id {
@@ -318,6 +319,10 @@ impl DataExchangeManager {
                         channels,
                     } = edge
                     {
+                        local_exchange_channel_sets
+                            .entry(exchange_id.clone())
+                            .or_insert(channels.len());
+
                         let target_id = target.id.clone();
                         let query_id = env.query_id.clone();
                         let address = target.flight_address.clone();
@@ -419,6 +424,9 @@ impl DataExchangeManager {
                         query_coordinator.info = query_info;
                         query_coordinator.is_request_server =
                             GlobalConfig::instance().query.node_id == env.request_server_id;
+                        for (exchange_id, num_threads) in &local_exchange_channel_sets {
+                            query_coordinator.ensure_inbound_channel_set(exchange_id, *num_threads);
+                        }
                         query_coordinator.register_flight_channel_receiver(targets_exchanges)?;
                         query_coordinator.register_ping_pong_exchanges(ping_pong_exchanges);
                         query_coordinator.add_statistics_exchanges(request_exchanges)?;
@@ -428,6 +436,9 @@ impl DataExchangeManager {
                         query_coordinator.info = query_info;
                         query_coordinator.is_request_server =
                             GlobalConfig::instance().query.node_id == env.request_server_id;
+                        for (exchange_id, num_threads) in &local_exchange_channel_sets {
+                            query_coordinator.ensure_inbound_channel_set(exchange_id, *num_threads);
+                        }
                         query_coordinator.register_flight_channel_receiver(targets_exchanges)?;
                         query_coordinator.register_ping_pong_exchanges(ping_pong_exchanges);
                         query_coordinator.add_statistics_exchanges(request_exchanges)?;
@@ -902,6 +913,18 @@ impl DataExchangeManager {
             }
         }
     }
+
+    pub fn has_local_fragment(&self, query_id: &str, fragment_id: usize) -> Result<bool> {
+        let queries_coordinator_guard = self.queries_coordinator.lock();
+        let queries_coordinator = unsafe { &mut *queries_coordinator_guard.deref().get() };
+
+        match queries_coordinator.get_mut(query_id) {
+            None => Err(ErrorCode::Internal("Query not exists.")),
+            Some(query_coordinator) => Ok(query_coordinator
+                .fragments_coordinator
+                .contains_key(&fragment_id)),
+        }
+    }
 }
 
 struct QueryInfo {
@@ -1055,6 +1078,12 @@ impl QueryCoordinator {
             &channel_set,
             max_bytes_per_connection,
         ))
+    }
+
+    fn ensure_inbound_channel_set(&mut self, channel_id: &str, num_threads: usize) {
+        self.inbound_channel_sets
+            .entry(channel_id.to_string())
+            .or_insert_with(|| Arc::new(NetworkInboundChannelSet::new(num_threads)));
     }
 
     pub fn prepare_pipeline(&mut self, fragments: &QueryFragments) -> Result<()> {

@@ -356,6 +356,12 @@ impl OptimizeExprTask {
 
         let should_enforce = {
             let mut should_enforce = true;
+            // A global LIMIT must first collapse to a single serial result, but that
+            // serial result can still be safely replicated to every node afterward.
+            let allow_serial_to_broadcast = optimizer.enforce_distribution()
+                && physical_prop.distribution == Distribution::Serial
+                && matches!(self.required_prop.distribution, Distribution::Broadcast)
+                && matches!(m_expr.plan.as_ref(), RelOperator::Limit(_));
 
             if optimizer.enforce_distribution()
                 && physical_prop.distribution == Distribution::Serial
@@ -363,6 +369,7 @@ impl OptimizeExprTask {
                     self.required_prop.distribution,
                     Distribution::Serial | Distribution::Any
                 )
+                && !allow_serial_to_broadcast
             {
                 should_enforce = false;
             }

@@ -14,6 +14,7 @@
 
 use std::any::Any;
 
+use databend_common_catalog::table_context::TableContext;
 use databend_common_exception::Result;
 use databend_common_expression::DataSchemaRef;
 use databend_common_pipeline::core::PlanScope;
@@ -24,6 +25,11 @@ use crate::physical_plans::physical_plan::IPhysicalPlan;
 use crate::physical_plans::physical_plan::PhysicalPlan;
 use crate::physical_plans::physical_plan::PhysicalPlanMeta;
 use crate::pipelines::PipelineBuilder;
+use crate::servers::flight::v1::exchange::BroadcastExchangeParams;
+use crate::servers::flight::v1::exchange::DataExchange;
+use crate::servers::flight::v1::exchange::GlobalExchangeParams;
+use crate::servers::flight::v1::exchange::via_broadcast_exchange_source;
+use crate::servers::flight::v1::exchange::via_hash_exchange_source;
 
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub struct ExchangeSource {
@@ -35,6 +41,7 @@ pub struct ExchangeSource {
     // Fragment ID of source fragment
     pub source_fragment_id: usize,
     pub query_id: String,
+    pub source_exchange: Option<DataExchange>,
 }
 
 #[typetag::serde]
@@ -74,11 +81,52 @@ impl IPhysicalPlan for ExchangeSource {
             schema: self.schema.clone(),
             source_fragment_id: self.source_fragment_id,
             query_id: self.query_id.clone(),
+            source_exchange: self.source_exchange.clone(),
         })
     }
 
     fn build_pipeline2(&self, builder: &mut PipelineBuilder) -> Result<()> {
         let exchange_manager = builder.ctx.get_exchange_manager();
+        if !exchange_manager.has_local_fragment(&self.query_id, self.source_fragment_id)? {
+            return match &self.source_exchange {
+                Some(DataExchange::Broadcast(exchange)) => via_broadcast_exchange_source(
+                    builder.ctx.clone(),
+                    &BroadcastExchangeParams {
+                        query_id: self.query_id.clone(),
+                        executor_id: builder.ctx.get_cluster().local_id.clone(),
+                        schema: self.schema.clone(),
+                        exchange_id: exchange.id.clone(),
+                        destination_channels: exchange.destination_channels.clone(),
+                    },
+                    &mut builder.main_pipeline,
+                ),
+                Some(DataExchange::GlobalShuffleExchange(exchange)) => via_hash_exchange_source(
+                    &builder.ctx,
+                    &GlobalExchangeParams {
+                        query_id: self.query_id.clone(),
+                        executor_id: builder.ctx.get_cluster().local_id.clone(),
+                        schema: self.schema.clone(),
+                        exchange_id: exchange.id.clone(),
+                        shuffle_keys: exchange.shuffle_keys.clone(),
+                        destination_channels: exchange.destination_channels.clone(),
+                    },
+                    &mut builder.main_pipeline,
+                ),
+                Some(source_exchange) => Err(databend_common_exception::ErrorCode::Unimplemented(
+                    format!(
+                        "ExchangeSource cannot subscribe remote {:?} fragment {}",
+                        source_exchange, self.source_fragment_id
+                    ),
+                )),
+                None => Err(databend_common_exception::ErrorCode::Unimplemented(
+                    format!(
+                        "ExchangeSource {} is missing source exchange metadata",
+                        self.source_fragment_id
+                    ),
+                )),
+            };
+        }
+
         let build_res = exchange_manager.get_fragment_source(
             &self.query_id,
             self.source_fragment_id,

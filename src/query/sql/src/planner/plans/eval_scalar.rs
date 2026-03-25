@@ -14,6 +14,7 @@
 
 use std::sync::Arc;
 
+use databend_common_catalog::table_context::TableContext;
 use databend_common_exception::Result;
 
 use crate::ColumnBinding;
@@ -23,6 +24,7 @@ use crate::Symbol;
 use crate::Visibility;
 use crate::optimizer::ir::RelExpr;
 use crate::optimizer::ir::RelationalProperty;
+use crate::optimizer::ir::RequiredProperty;
 use crate::optimizer::ir::StatInfo;
 use crate::plans::BoundColumnRef;
 use crate::plans::Operator;
@@ -127,5 +129,14 @@ impl Operator for EvalScalar {
 
     fn derive_stats(&self, rel_expr: &RelExpr) -> Result<Arc<StatInfo>> {
         rel_expr.derive_cardinality_child(0)
+    }
+
+    fn compute_required_prop_children(
+        &self,
+        _ctx: Arc<dyn TableContext>,
+        _rel_expr: &RelExpr,
+        required: &RequiredProperty,
+    ) -> Result<Vec<Vec<RequiredProperty>>> {
+        Ok(vec![vec![required.clone()]])
     }
 }

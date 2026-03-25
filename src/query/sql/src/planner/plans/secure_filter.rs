@@ -15,12 +15,14 @@
 use std::collections::HashMap;
 use std::sync::Arc;
 
+use databend_common_catalog::table_context::TableContext;
 use databend_common_exception::Result;
 
 use crate::ColumnSet;
 use crate::IndexType;
 use crate::optimizer::ir::RelExpr;
 use crate::optimizer::ir::RelationalProperty;
+use crate::optimizer::ir::RequiredProperty;
 use crate::optimizer::ir::SelectivityEstimator;
 use crate::optimizer::ir::StatInfo;
 use crate::optimizer::ir::Statistics;
@@ -108,5 +110,14 @@ impl Operator for SecureFilter {
                 column_stats: HashMap::new(),
             },
         }))
+    }
+
+    fn compute_required_prop_children(
+        &self,
+        _ctx: Arc<dyn TableContext>,
+        _rel_expr: &RelExpr,
+        required: &RequiredProperty,
+    ) -> Result<Vec<Vec<RequiredProperty>>> {
+        Ok(vec![vec![required.clone()]])
     }
 }

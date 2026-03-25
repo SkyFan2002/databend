@@ -1,0 +1,13 @@
+name: "02_in_subquery_limit_broadcast"
+description: "Broadcast the globally limited IN-subquery build side in distributed planning"
+
+sql: |
+  SELECT *
+  FROM integers t1
+  WHERE t1.i IN (SELECT t2.i FROM integers t2 LIMIT 10);
+
+auto_statistics: true
+node_num: 2
+
+tables:
+  integers: basic/01_integers.sql

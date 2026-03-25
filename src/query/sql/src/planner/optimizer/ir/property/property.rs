@@ -121,7 +121,6 @@ impl Distribution {
             (Distribution::GlobalHash(keys), Distribution::GlobalHash(other_keys)) => {
                 keys == other_keys
             }
-            (Distribution::GlobalHash(_), Distribution::Broadcast) => true,
             _ => false,
         }
     }
