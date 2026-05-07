@@ -4492,6 +4492,7 @@ dependencies = [
  "anyhow",
  "arrow-schema 56.2.0",
  "async-backtrace",
+ "async-trait",
  "base64 0.22.1",
  "borsh",
  "chrono",

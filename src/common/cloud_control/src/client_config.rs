@@ -58,6 +58,13 @@ impl ClientConfig {
         );
     }
 
+    pub fn add_sharing_version_info(&mut self) {
+        self.add_metadata(
+            crate::sharing_client::SHARING_CLIENT_VERSION_NAME,
+            crate::sharing_client::SHARING_CLIENT_VERSION,
+        );
+    }
+
     pub fn add_worker_version_info(&mut self) {
         self.add_metadata(
             crate::worker_client::WORKER_CLIENT_VERSION_NAME,

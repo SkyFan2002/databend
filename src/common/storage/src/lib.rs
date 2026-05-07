@@ -44,6 +44,13 @@ pub use config::StorageConfig;
 mod http_client;
 pub use http_client::StorageHttpClient;
 
+mod sharing;
+pub use sharing::ShareStorageCredential;
+pub use sharing::ShareStorageCredentialProvider;
+pub use sharing::ShareStorageCredentialRequest;
+pub use sharing::ShareStorageOperator;
+pub use sharing::TodoShareStorageCredentialProvider;
+
 mod operator;
 pub use operator::DataOperator;
 pub use operator::IcebergFileIO;

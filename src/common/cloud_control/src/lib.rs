@@ -16,6 +16,7 @@ pub mod client_config;
 pub mod cloud_api;
 pub mod notification_client;
 pub mod notification_utils;
+pub mod sharing_client;
 pub mod task_client;
 pub mod task_utils;
 pub mod worker_client;
@@ -28,6 +29,7 @@ pub mod pb {
     tonic::include_proto!("taskproto");
     tonic::include_proto!("notificationproto");
     tonic::include_proto!("resourceproto");
+    tonic::include_proto!("sharingproto");
 }
 
 pub mod utils {

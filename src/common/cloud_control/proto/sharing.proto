@@ -1,0 +1,87 @@
+syntax = "proto3";
+option go_package = "databend.com/cloudcontrol/proto";
+
+package sharingproto;
+
+message SharingError {
+  string kind = 1;
+  string message = 2;
+  int32 code = 3;
+}
+
+message CreateShareRequest {
+  string tenant_id = 1;
+  string share_name = 2;
+}
+
+message CreateShareResponse {
+  optional SharingError error = 1;
+}
+
+message DropShareRequest {
+  string tenant_id = 1;
+  string share_name = 2;
+  bool if_exists = 3;
+}
+
+message DropShareResponse {
+  optional SharingError error = 1;
+}
+
+message GrantShareRequest {
+  string tenant_id = 1;
+  string share_name = 2;
+  string consumer_tenant_id = 3;
+}
+
+message GrantShareResponse {
+  optional SharingError error = 1;
+}
+
+message RevokeShareRequest {
+  string tenant_id = 1;
+  string share_name = 2;
+  string consumer_tenant_id = 3;
+}
+
+message RevokeShareResponse {
+  optional SharingError error = 1;
+}
+
+message GetShareCredentialRequest {
+  string consumer_tenant_id = 1;
+  string provider_tenant_id = 2;
+  string share_name = 3;
+  string consumer_user = 4;
+  string query_id = 5;
+}
+
+message ShareS3StorageCredential {
+  string endpoint_url = 1;
+  string region = 2;
+  string bucket = 3;
+  string root = 4;
+  string access_key_id = 5;
+  string secret_access_key = 6;
+  string session_token = 7;
+  string expires_at = 8;
+}
+
+message ShareStorageCredential {
+  oneof credential {
+    ShareS3StorageCredential s3 = 1;
+  }
+}
+
+message GetShareCredentialResponse {
+  optional SharingError error = 1;
+  ShareStorageCredential credential = 2;
+}
+
+service SharingService {
+  rpc CreateShare(CreateShareRequest) returns (CreateShareResponse);
+  rpc DropShare(DropShareRequest) returns (DropShareResponse);
+  rpc GrantShare(GrantShareRequest) returns (GrantShareResponse);
+  rpc RevokeShare(RevokeShareRequest) returns (RevokeShareResponse);
+  rpc GetShareCredential(GetShareCredentialRequest) returns (GetShareCredentialResponse);
+}
