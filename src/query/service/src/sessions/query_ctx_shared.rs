@@ -547,6 +547,8 @@ impl QueryContextShared {
                 .clone(),
         };
 
+        let source_table = source_table.execution_table();
+
         let mut stream_info = stream.get_table_info().to_owned();
         stream_info.meta.schema = source_table.schema();
 

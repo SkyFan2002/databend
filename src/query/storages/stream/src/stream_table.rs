@@ -51,6 +51,7 @@ use databend_storages_common_table_meta::table::OPT_KEY_DATABASE_ID;
 use databend_storages_common_table_meta::table::OPT_KEY_MODE;
 use databend_storages_common_table_meta::table::OPT_KEY_SNAPSHOT_LOCATION;
 use databend_storages_common_table_meta::table::OPT_KEY_SOURCE_DATABASE_ID;
+use databend_storages_common_table_meta::table::OPT_KEY_SOURCE_SHARED_DATABASE_ID;
 use databend_storages_common_table_meta::table::OPT_KEY_SOURCE_TABLE_ID;
 use databend_storages_common_table_meta::table::OPT_KEY_TABLE_VER;
 use databend_storages_common_table_meta::table::StreamMode;
@@ -118,6 +119,7 @@ impl StreamTable {
             .await?
         };
 
+        let source = source.execution_table();
         let desc = &source.get_table_info().desc;
         if source.get_table_info().ident.table_id != self.source_table_id()? {
             return Err(ErrorCode::IllegalStream(format!(
@@ -155,6 +157,7 @@ impl StreamTable {
                 ))
             })?;
 
+        let source = source.execution_table();
         let Some(batch_limit) = batch_limit else {
             return Ok(source);
         };
@@ -307,7 +310,18 @@ impl StreamTable {
             })
     }
 
+    pub fn source_shared_database_id(&self) -> Result<Option<u64>> {
+        self.info
+            .options()
+            .get(OPT_KEY_SOURCE_SHARED_DATABASE_ID)
+            .map(|id| id.parse::<u64>().map_err(ErrorCode::from))
+            .transpose()
+    }
+
     pub async fn source_database_id(&self, catalog: &dyn Catalog) -> Result<u64> {
+        if let Some(id) = self.source_shared_database_id()? {
+            return Ok(id);
+        }
         let source_db_id_opt = self
             .info
             .options()

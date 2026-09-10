@@ -67,8 +67,19 @@ use crate::table_context::TableContext;
 // concrete type before reuse.
 pub type ReusablePrunedMetas = Arc<dyn Any + Send + Sync>;
 
+/// Object-safe conversion used by the default execution-table accessor.
+pub trait IntoTable {
+    fn into_table(self: Arc<Self>) -> Arc<dyn Table>;
+}
+
+impl<T: Table + 'static> IntoTable for T {
+    fn into_table(self: Arc<Self>) -> Arc<dyn Table> {
+        self
+    }
+}
+
 #[async_trait::async_trait]
-pub trait Table: Sync + Send {
+pub trait Table: Sync + Send + IntoTable {
     fn name(&self) -> &str {
         &self.get_table_info().name
     }
@@ -117,6 +128,13 @@ pub trait Table: Sync + Send {
     /// their output columns are annotated separately by the planner.
     fn stream_source_table_info(&self) -> Option<&TableInfo> {
         None
+    }
+
+    /// Returns the underlying execution table for a wrapper already resolved by the catalog.
+    /// This accessor does not refresh metadata or revalidate authorization.
+    /// Ordinary tables return the same Arc; wrappers return their underlying table.
+    fn execution_table(self: Arc<Self>) -> Arc<dyn Table> {
+        self.into_table()
     }
 
     fn get_data_source_info(&self) -> DataSourceInfo {

@@ -213,6 +213,10 @@ impl Table for SharedTable {
         &self.exposed_info
     }
 
+    fn execution_table(self: Arc<Self>) -> Arc<dyn Table> {
+        self.provider_table.clone()
+    }
+
     fn plan_can_be_cached(&self) -> bool {
         // Share grants and credentials can change without changing the provider
         // table snapshot. A cached plan would retain an obsolete SharedTable and
